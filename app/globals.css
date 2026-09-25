@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #030409;
+}
+
+body {
+  background: transparent;
+  color: #f5f7fc;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'ss01', 'cv11';
+  /* Asegura que el Atmosphere (fixed z-0) siempre está detrás */
+  isolation: isolate;
+}
+
+/* ============ MOTION SYSTEM ============ */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.333%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100vh); }
+}
+
+.animate-ticker { animation: ticker 40s linear infinite; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-glow { animation: glow-pulse 4s ease-in-out infinite; }
+
+/* ============ SELECTION ============ */
+::selection {
+  background: #5b8cff;
+  color: #030409;
+}
+
+/* ============ FOCUS ============ */
+*:focus-visible {
+  outline: 2px solid #5b8cff;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ============ SCROLLBAR (desktop) ============ */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #030409; }
+  ::-webkit-scrollbar-thumb {
+    background: #1a1f33;
+    border-radius: 10px;
+    border: 2px solid #030409;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #232a42; }
+}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============ UTILITIES ============ */
+.sticky-cta-offset { padding-bottom: 96px; }
+@media (min-width: 768px) { .sticky-cta-offset { padding-bottom: 0; } }
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+/* ============ ATMOSPHERE ANIMATIONS ============ */
+
+/* Grid desplazándose lentamente en diagonal */
+@keyframes grid-drift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 64px 64px, 64px 64px;
+  }
+}
+
+@keyframes grid-drift-slow {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: -128px -128px, -128px -128px;
+  }
+}
+
+.aetheryon-grid {
+  animation: grid-drift 90s linear infinite;
+}
+
+.aetheryon-grid-slow {
+  animation: grid-drift-slow 140s linear infinite;
+}
+
+/* Scanline vertical que recorre la pantalla */
+@keyframes scan-vertical {
+  0% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+.aetheryon-scanline {
+  animation: scan-vertical 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Fallback para usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .aetheryon-grid,
+  .aetheryon-grid-slow,
+  .aetheryon-scanline {
+    animation: none !important;
+  }
+}

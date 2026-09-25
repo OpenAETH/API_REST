@@ -1,0 +1,959 @@
+diff --git a/app/API/page.tsx b/app/API/page.tsx
+index a48dd9f..26ada98 100644
+--- a/app/API/page.tsx
++++ b/app/API/page.tsx
+@@ -2,17 +2,17 @@ import type { Metadata } from 'next';
+ import Script from 'next/script';
+ 
+ import { Hero } from '@/components/Hero';
++import { StatsBar } from '@/components/StatsBar';
+ import { Problem } from '@/components/Problem';
+ import { Solution } from '@/components/Solution';
+ import { UseCases } from '@/components/UseCases';
+ import { Build } from '@/components/Build';
+-import { Deliverables } from '@/components/Deliverables';
+ import { Methodology } from '@/components/Methodology';
+-import { Requirements } from '@/components/Requirements';
++import { Handoff } from '@/components/Handoff';
+ import { Scope } from '@/components/Scope';
+-import { Investment } from '@/components/Investment';
+ import { Timeline } from '@/components/Timeline';
+-import { Exclusions } from '@/components/Exclusions';
++import { Investment } from '@/components/Investment';
++import { Comparison } from '@/components/Comparison';
+ import { FAQ } from '@/components/FAQ';
+ import { Differentiation } from '@/components/Differentiation';
+ import { FinalCTA } from '@/components/FinalCTA';
+@@ -64,17 +64,17 @@ export default function LandingAPIPage() {
+       <StickyCTA />
+       <main className="pt-14 md:pt-16">
+         <Hero />
++        <StatsBar />
+         <Problem />
+         <Solution />
+         <UseCases />
+         <Build />
+-        <Deliverables />
+         <Methodology />
+-        <Requirements />
++        <Handoff />
+         <Scope />
+-        <Investment />
+         <Timeline />
+-        <Exclusions />
++        <Investment />
++        <Comparison />
+         <FAQ />
+         <Differentiation />
+         <FinalCTA />
+diff --git a/app/page.tsx b/app/page.tsx
+index a48dd9f..26ada98 100644
+--- a/app/page.tsx
++++ b/app/page.tsx
+@@ -2,17 +2,17 @@ import type { Metadata } from 'next';
+ import Script from 'next/script';
+ 
+ import { Hero } from '@/components/Hero';
++import { StatsBar } from '@/components/StatsBar';
+ import { Problem } from '@/components/Problem';
+ import { Solution } from '@/components/Solution';
+ import { UseCases } from '@/components/UseCases';
+ import { Build } from '@/components/Build';
+-import { Deliverables } from '@/components/Deliverables';
+ import { Methodology } from '@/components/Methodology';
+-import { Requirements } from '@/components/Requirements';
++import { Handoff } from '@/components/Handoff';
+ import { Scope } from '@/components/Scope';
+-import { Investment } from '@/components/Investment';
+ import { Timeline } from '@/components/Timeline';
+-import { Exclusions } from '@/components/Exclusions';
++import { Investment } from '@/components/Investment';
++import { Comparison } from '@/components/Comparison';
+ import { FAQ } from '@/components/FAQ';
+ import { Differentiation } from '@/components/Differentiation';
+ import { FinalCTA } from '@/components/FinalCTA';
+@@ -64,17 +64,17 @@ export default function LandingAPIPage() {
+       <StickyCTA />
+       <main className="pt-14 md:pt-16">
+         <Hero />
++        <StatsBar />
+         <Problem />
+         <Solution />
+         <UseCases />
+         <Build />
+-        <Deliverables />
+         <Methodology />
+-        <Requirements />
++        <Handoff />
+         <Scope />
+-        <Investment />
+         <Timeline />
+-        <Exclusions />
++        <Investment />
++        <Comparison />
+         <FAQ />
+         <Differentiation />
+         <FinalCTA />
+diff --git a/components/Build.tsx b/components/Build.tsx
+index 7b6108e..10b452c 100644
+--- a/components/Build.tsx
++++ b/components/Build.tsx
+@@ -1,7 +1,9 @@
+ import { Section } from './Section';
++import { Card } from './Card';
++import { Reveal } from './Reveal';
+ 
+ const items = [
+-  { title: 'REST APIs', body: 'Endpoints para consulta, creación, actualización y eliminación de información.' },
++  { title: 'REST APIs', body: 'Endpoints para consulta, creación, actualización y eliminación de información.', big: true },
+   { title: 'Integraciones', body: 'Conexión entre sistemas propios y servicios externos.' },
+   { title: 'API Gateway / Integration Layer', body: 'Capa intermedia para organizar comunicaciones entre componentes.' },
+   { title: 'Data Transformation', body: 'Conversión y normalización de estructuras de datos.' },
+@@ -10,15 +12,24 @@ const items = [
+   { title: 'Documentation', body: 'Documentación técnica de endpoints y contratos de integración.' },
+ ];
+ 
++const accents = ['signal', 'aurora', 'plasma'] as const;
++
+ export function Build() {
+   return (
+-    <Section id="construir" eyebrow="Alcance técnico" title="Qué podemos construir." tone="panel">
+-      <div className="grid gap-x-10 gap-y-8 md:grid-cols-2">
+-        {items.map((i) => (
+-          <div key={i.title} className="border-l-2 border-signal/40 pl-5">
+-            <h3 className="mb-2 text-lg font-semibold text-ink">{i.title}</h3>
+-            <p className="text-ink-muted">{i.body}</p>
+-          </div>
++    <Section id="construir" index="04" eyebrow="Alcance técnico" title="Qué podemos construir.">
++      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
++        {items.map((it, i) => (
++          <Reveal key={it.title} delay={i * 60} className={it.big ? 'lg:col-span-2' : ''}>
++            <Card accent={accents[i % accents.length]} className="h-full">
++              <span className="mb-4 block font-mono text-xs uppercase tracking-[0.2em] text-ink-500">
++                0{i + 1}
++              </span>
++              <h3 className="mb-2 font-display text-lg font-semibold text-ink-100 md:text-xl">
++                {it.title}
++              </h3>
++              <p className="text-sm leading-relaxed text-ink-300 md:text-base">{it.body}</p>
++            </Card>
++          </Reveal>
+         ))}
+       </div>
+     </Section>
+diff --git a/components/Comparison.tsx b/components/Comparison.tsx
+new file mode 100644
+index 0000000..af459d5
+--- /dev/null
++++ b/components/Comparison.tsx
+@@ -0,0 +1,69 @@
++import { Section } from './Section';
++import { Reveal } from './Reveal';
++
++const included = [
++  'diseño e implementación de la API',
++  'endpoints definidos y documentados',
++  'autenticación y validaciones',
++  'manejo de errores',
++  'pruebas de los flujos principales',
++  'código fuente y repositorio',
++];
++
++const excluded = [
++  'reconstrucción completa de sistemas existentes',
++  'desarrollo de aplicaciones completas',
++  'migraciones masivas de datos',
++  'infraestructura cloud',
++  'licencias de terceros',
++  'servicios externos pagos',
++  'mantenimiento indefinido',
++  'soporte 24/7',
++  'integraciones no contempladas en el alcance inicial',
++];
++
++export function Comparison() {
++  return (
++    <Section id="condiciones" index="10" eyebrow="Condiciones" title="Para evitar sorpresas." tone="panel">
++      <div className="grid gap-6 lg:grid-cols-2">
++        <Reveal>
++          <div className="h-full rounded-2xl border border-aurora-500/20 bg-void-800/40 p-6 md:p-8">
++            <h3 className="mb-5 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-aurora-500">
++              <span className="h-1.5 w-1.5 rounded-full bg-aurora-500" />
++              Incluye
++            </h3>
++            <ul className="grid gap-3">
++              {included.map((i) => (
++                <li key={i} className="flex items-start gap-3 text-sm text-ink-300 md:text-base">
++                  <span aria-hidden="true" className="mt-0.5 text-aurora-500">✓</span>
++                  <span>{i}</span>
++                </li>
++              ))}
++            </ul>
++          </div>
++        </Reveal>
++
++        <Reveal delay={100}>
++          <div className="h-full rounded-2xl border border-line-900 bg-void-800/20 p-6 md:p-8">
++            <h3 className="mb-5 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-ink-500">
++              <span className="h-1.5 w-1.5 rounded-full bg-ink-700" />
++              No incluye
++            </h3>
++            <ul className="grid gap-3">
++              {excluded.map((e) => (
++                <li key={e} className="flex items-start gap-3 text-sm text-ink-500 md:text-base">
++                  <span aria-hidden="true" className="mt-0.5 text-ink-700">✕</span>
++                  <span>{e}</span>
++                </li>
++              ))}
++            </ul>
++          </div>
++        </Reveal>
++      </div>
++
++      <p className="mt-8 max-w-2xl text-ink-100">
++        Cualquier requerimiento adicional puede presupuestarse como extensión.
++      </p>
++    </Section>
++  );
++}
+diff --git a/components/Deliverables.tsx b/components/Deliverables.tsx
+deleted file mode 100644
+index 3e371d4..0000000
+--- a/components/Deliverables.tsx
++++ /dev/null
+@@ -1,37 +0,0 @@
+-import { Section } from './Section';
+-
+-const deliverables = [
+-  'código fuente',
+-  'API implementada',
+-  'endpoints definidos',
+-  'integración configurada',
+-  'estructura de datos',
+-  'autenticación',
+-  'validaciones',
+-  'manejo de errores',
+-  'documentación',
+-  'configuración de ambiente',
+-  'pruebas',
+-  'instrucciones de despliegue',
+-  'repositorio correspondiente',
+-  'soporte de implementación según modalidad contratada',
+-];
+-
+-export function Deliverables() {
+-  return (
+-    <Section id="entregables" eyebrow="Entregables" title="Qué recibe el cliente.">
+-      <ul className="grid gap-x-8 gap-y-2 md:grid-cols-2">
+-        {deliverables.map((d) => (
+-          <li key={d} className="flex items-center gap-3 border-b border-void-border/60 py-2 text-ink-muted">
+-            <span aria-hidden="true" className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+-            <span>{d}</span>
+-          </li>
+-        ))}
+-      </ul>
+-      <p className="mt-8 max-w-2xl rounded-md border border-void-border bg-void-panel px-5 py-4 text-sm text-ink-muted">
+-        El alcance definitivo se establece según la complejidad y cantidad de integraciones
+-        requeridas.
+-      </p>
+-    </Section>
+-  );
+-}
+diff --git a/components/Differentiation.tsx b/components/Differentiation.tsx
+index 333d497..1568bbc 100644
+--- a/components/Differentiation.tsx
++++ b/components/Differentiation.tsx
+@@ -1,12 +1,32 @@
+ import { Section } from './Section';
++import { Reveal } from './Reveal';
+ 
+ export function Differentiation() {
+   return (
+-    <Section id="aetheryon" eyebrow="AETHERYON Systems" title="Un partner tecnológico independiente.">
+-      <p className="max-w-prose text-lg leading-relaxed text-ink-muted md:text-xl">
+-        Capacidad técnica, analítica y autogestión independiente para resolver necesidades
+-        específicas de tecnología sin necesidad de incorporar una estructura completa.
+-      </p>
++    <Section id="aetheryon" index="12" eyebrow="AETHERYON Systems" tone="panel">
++      <div className="grid items-center gap-10 lg:grid-cols-[auto_1fr]">
++        <Reveal>
++          <div className="relative flex h-28 w-28 flex-shrink-0 items-center justify-center rounded-2xl border border-line-700 bg-gradient-to-br from-void-700 to-void-900 md:h-36 md:w-36">
++            <div
++              aria-hidden="true"
++              className="absolute inset-0 rounded-2xl opacity-60"
++              style={{ background: 'radial-gradient(circle at 30% 20%, rgba(91,140,255,0.25), transparent 60%)' }}
++            />
++            <span className="relative font-display text-3xl font-semibold tracking-tight text-ink-100 md:text-4xl">
++              AE
++            </span>
++          </div>
++        </Reveal>
++        <Reveal delay={100}>
++          <h2 className="mb-4 max-w-3xl font-display text-[clamp(1.875rem,3.5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-ink-100">
++            Un partner tecnológico independiente.
++          </h2>
++          <p className="max-w-prose text-lg leading-relaxed text-ink-300 md:text-xl">
++            Capacidad técnica, analítica y autogestión independiente para resolver necesidades
++            específicas de tecnología sin necesidad de incorporar una estructura completa.
++          </p>
++        </Reveal>
++      </div>
+     </Section>
+   );
+ }
+diff --git a/components/Exclusions.tsx b/components/Exclusions.tsx
+deleted file mode 100644
+index e973dd3..0000000
+--- a/components/Exclusions.tsx
++++ /dev/null
+@@ -1,35 +0,0 @@
+-import { Section } from './Section';
+-
+-const exclusions = [
+-  'reconstrucción completa de sistemas existentes',
+-  'desarrollo de aplicaciones completas',
+-  'migraciones masivas de datos',
+-  'infraestructura cloud',
+-  'licencias de terceros',
+-  'servicios externos pagos',
+-  'mantenimiento indefinido',
+-  'soporte 24/7',
+-  'integraciones no contempladas en el alcance inicial',
+-];
+-
+-export function Exclusions() {
+-  return (
+-    <Section id="exclusiones" eyebrow="Condiciones" title="Para evitar sorpresas.">
+-      <p className="mb-6 max-w-2xl text-ink-muted">El precio base no implica automáticamente:</p>
+-      <ul className="grid gap-2 md:grid-cols-2">
+-        {exclusions.map((e) => (
+-          <li
+-            key={e}
+-            className="flex items-start gap-3 rounded-md border border-void-border bg-void-panel/60 px-4 py-3 text-ink-muted"
+-          >
+-            <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-ink-dim" />
+-            <span>{e}</span>
+-          </li>
+-        ))}
+-      </ul>
+-      <p className="mt-8 max-w-2xl text-ink">
+-        Cualquier requerimiento adicional puede presupuestarse como extensión.
+-      </p>
+-    </Section>
+-  );
+-}
+diff --git a/components/FAQ.tsx b/components/FAQ.tsx
+index 8bd088b..2b929de 100644
+--- a/components/FAQ.tsx
++++ b/components/FAQ.tsx
+@@ -16,7 +16,13 @@ const faqs = [
+ 
+ export function FAQ() {
+   return (
+-    <Section id="faq" eyebrow="Preguntas frecuentes" title="Lo que suelen preguntar." tone="panel">
++    <Section
++      id="faq"
++      index="11"
++      eyebrow="Preguntas frecuentes"
++      title="Lo que suelen preguntar."
++      description="Antes de escribirnos, puede que tu duda ya esté acá."
++    >
+       <Accordion items={faqs} />
+     </Section>
+   );
+diff --git a/components/FinalCTA.tsx b/components/FinalCTA.tsx
+index f008261..900ebdb 100644
+--- a/components/FinalCTA.tsx
++++ b/components/FinalCTA.tsx
+@@ -1,33 +1,46 @@
+ import { landingConfig } from '@/config/landing';
+ import { CTAButton } from './CTAButton';
++import { Reveal } from './Reveal';
+ 
+ export function FinalCTA() {
+   return (
+-    <section id="comenzar" className="border-b border-void-border/60 bg-void">
+-      <div className="mx-auto max-w-container px-6 py-20 text-center md:py-28">
+-        <h2 className="mb-4 text-3xl font-semibold text-ink md:text-5xl">
+-          ¿Necesitás conectar tus sistemas?
+-        </h2>
+-        <p className="mx-auto mb-10 max-w-2xl text-lg text-ink-muted md:text-xl">
+-          Si el problema está claro, podemos comenzar directamente.
+-        </p>
+-        <div className="flex flex-col items-center gap-4">
+-          <CTAButton
+-            href={landingConfig.cta.primary.href}
+-            label={landingConfig.cta.primary.label}
+-            position="final"
+-            eventType="clientsnda_exit"
+-          />
+-          <p className="max-w-md text-sm text-ink-muted">
+-            Revisá el alcance, completá los datos del proyecto y avanzá mediante ClientsNDA.
++    <section id="comenzar" className="relative overflow-hidden border-b border-line-900 bg-void-900">
++      <div
++        aria-hidden="true"
++        className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 opacity-30 blur-[120px]"
++        style={{ background: 'radial-gradient(ellipse, #5b8cff 0%, transparent 60%)' }}
++      />
++      <div className="relative mx-auto max-w-container px-6 py-24 text-center md:py-32">
++        <Reveal>
++          <h2 className="mb-5 font-display text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-ink-100">
++            ¿Necesitás{' '}
++            <span className="bg-gradient-to-r from-signal-400 via-signal-500 to-plasma-400 bg-clip-text text-transparent">
++              conectar tus sistemas?
++            </span>
++          </h2>
++          <p className="mx-auto mb-10 max-w-2xl text-lg text-ink-300 md:text-xl">
++            Si el problema está claro, podemos comenzar directamente.
+           </p>
+-          <a
+-            href={landingConfig.cta.finalSecondary.href}
+-            className="mt-4 text-sm text-ink-muted underline decoration-void-border underline-offset-4 transition-colors hover:text-signal hover:decoration-signal"
+-          >
+-            {landingConfig.cta.finalSecondary.label}
+-          </a>
+-        </div>
++          <div className="flex flex-col items-center gap-4">
++            <CTAButton
++              href={landingConfig.cta.primary.href}
++              label={landingConfig.cta.primary.label}
++              position="final"
++              eventType="clientsnda_exit"
++              size="lg"
++              glow
++            />
++            <p className="max-w-md text-sm text-ink-500">
++              Revisá el alcance, completá los datos del proyecto y avanzá mediante ClientsNDA.
++            </p>
++            <a
++              href={landingConfig.cta.finalSecondary.href}
++              className="mt-4 text-sm text-ink-500 underline decoration-line-700 underline-offset-4 transition-colors hover:text-signal-400 hover:decoration-signal-500"
++            >
++              {landingConfig.cta.finalSecondary.label}
++            </a>
++          </div>
++        </Reveal>
+       </div>
+     </section>
+   );
+diff --git a/components/Footer.tsx b/components/Footer.tsx
+index 0271eb3..4cb97ae 100644
+--- a/components/Footer.tsx
++++ b/components/Footer.tsx
+@@ -1,9 +1,41 @@
++const links = [
++  { href: '#problema', label: 'Problema' },
++  { href: '#solucion', label: 'Solución' },
++  { href: '#casos', label: 'Casos de uso' },
++  { href: '#alcance', label: 'Alcance' },
++  { href: '#inversion', label: 'Inversión' },
++  { href: '#faq', label: 'FAQ' },
++];
++
+ export function Footer() {
+   return (
+-    <footer className="bg-void-soft">
+-      <div className="mx-auto flex max-w-container flex-col items-center justify-between gap-4 px-6 py-8 text-xs text-ink-dim md:flex-row">
+-        <span>© {new Date().getFullYear()} AETHERYON Systems</span>
+-        <span className="font-mono uppercase tracking-[0.2em]">REST API / Integración</span>
++    <footer className="border-t border-line-900 bg-void-800">
++      <div className="mx-auto max-w-container px-6 py-12">
++        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
++          <div>
++            <span className="font-display text-lg font-semibold tracking-tight text-ink-100">
++              AETHERYON Systems
++            </span>
++            <p className="mt-2 max-w-xs text-sm text-ink-500">
++              Capacidad tecnológica independiente para conectar sistemas, datos y aplicaciones.
++            </p>
++          </div>
++          <nav className="flex flex-wrap gap-x-6 gap-y-3">
++            {links.map((l) => (
++              <a
++                key={l.href}
++                href={l.href}
++                className="text-sm text-ink-500 transition-colors hover:text-signal-400"
++              >
++                {l.label}
++              </a>
++            ))}
++          </nav>
++        </div>
++        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-line-900 pt-6 text-xs text-ink-700 md:flex-row">
++          <span>© {new Date().getFullYear()} AETHERYON Systems</span>
++          <span className="font-mono uppercase tracking-[0.2em]">REST API / Integración</span>
++        </div>
+       </div>
+     </footer>
+   );
+diff --git a/components/Handoff.tsx b/components/Handoff.tsx
+new file mode 100644
+index 0000000..bb0bdb0
+--- /dev/null
++++ b/components/Handoff.tsx
+@@ -0,0 +1,83 @@
++import { Section } from './Section';
++import { Reveal } from './Reveal';
++
++const deliverables = [
++  'código fuente',
++  'API implementada',
++  'endpoints definidos',
++  'integración configurada',
++  'estructura de datos',
++  'autenticación',
++  'validaciones',
++  'manejo de errores',
++  'documentación',
++  'configuración de ambiente',
++  'pruebas',
++  'instrucciones de despliegue',
++  'repositorio correspondiente',
++  'soporte de implementación según modalidad contratada',
++];
++
++const requirements = [
++  'descripción de los sistemas involucrados',
++  'objetivo de la integración',
++  'documentación existente',
++  'documentación de APIs externas, si corresponde',
++  'ejemplos de datos',
++  'acceso técnico cuando sea necesario',
++  'restricciones de seguridad',
++  'ambiente disponible',
++  'responsables técnicos o funcionales',
++];
++
++export function Handoff() {
++  return (
++    <Section
++      id="entregables"
++      index="06"
++      eyebrow="Entregables & Requisitos"
++      title="Qué te llevás y qué necesitamos de vos."
++    >
++      <div className="grid gap-6 lg:grid-cols-2">
++        <Reveal>
++          <div className="h-full rounded-2xl border border-line-900 bg-void-800/40 p-6 md:p-8">
++            <h3 className="mb-5 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-aurora-500">
++              <span className="h-1.5 w-1.5 rounded-full bg-aurora-500" />
++              Lo que recibís
++            </h3>
++            <ul className="grid gap-2">
++              {deliverables.map((d) => (
++                <li key={d} className="flex items-center gap-3 border-b border-line-900/60 py-2 text-sm text-ink-300 md:text-base">
++                  <span aria-hidden="true" className="h-1 w-4 flex-shrink-0 bg-aurora-500" />
++                  <span>{d}</span>
++                </li>
++              ))}
++            </ul>
++          </div>
++        </Reveal>
++
++        <Reveal delay={100}>
++          <div className="h-full rounded-2xl border border-line-900 bg-void-800/40 p-6 md:p-8">
++            <h3 className="mb-5 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-signal-400">
++              <span className="h-1.5 w-1.5 rounded-full bg-signal-500" />
++              Lo que necesitamos de vos
++            </h3>
++            <ul className="grid gap-2">
++              {requirements.map((r) => (
++                <li key={r} className="flex items-center gap-3 border-b border-line-900/60 py-2 text-sm text-ink-300 md:text-base">
++                  <span aria-hidden="true" className="h-1 w-4 flex-shrink-0 bg-signal-500" />
++                  <span>{r}</span>
++                </li>
++              ))}
++            </ul>
++          </div>
++        </Reveal>
++      </div>
++
++      <p className="mt-8 max-w-2xl text-ink-100">
++        No necesitás tener toda la arquitectura resuelta antes de contactarnos. Podemos ayudarte a
++        definirla.
++      </p>
++    </Section>
++  );
++}
+diff --git a/components/Investment.tsx b/components/Investment.tsx
+index 8c72897..2d18106 100644
+--- a/components/Investment.tsx
++++ b/components/Investment.tsx
+@@ -1,11 +1,40 @@
+ import { Section } from './Section';
+ import { PriceBlock } from './PriceBlock';
++import { Reveal } from './Reveal';
++
++const highlights = [
++  'código fuente y repositorio',
++  'endpoints definidos y documentados',
++  'autenticación y validaciones',
++  'manejo de errores',
++  'pruebas',
++  'soporte de implementación',
++];
+ 
+ export function Investment() {
+   return (
+-    <Section id="inversion" eyebrow="Inversión" title="Precio de referencia.">
+-      <PriceBlock />
+-      <p className="mt-6 max-w-2xl text-ink-muted">
++    <Section id="inversion" index="09" eyebrow="Inversión" title="Precio de referencia." tone="accent">
++      <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:items-stretch">
++        <Reveal>
++          <PriceBlock />
++        </Reveal>
++        <Reveal delay={100}>
++          <div className="h-full rounded-2xl border border-line-900 bg-void-800/40 p-6 md:p-8">
++            <h3 className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-ink-500">
++              Qué incluye
++            </h3>
++            <ul className="grid gap-3">
++              {highlights.map((h) => (
++                <li key={h} className="flex items-start gap-3 text-sm text-ink-300 md:text-base">
++                  <span aria-hidden="true" className="mt-1 text-aurora-500">✓</span>
++                  <span>{h}</span>
++                </li>
++              ))}
++            </ul>
++          </div>
++        </Reveal>
++      </div>
++      <p className="mt-6 max-w-2xl text-ink-300">
+         Proyectos de mayor complejidad pueden ampliarse según alcance, cantidad de integraciones y
+         requerimientos técnicos.
+       </p>
+diff --git a/components/Methodology.tsx b/components/Methodology.tsx
+index c87ba56..e35bb82 100644
+--- a/components/Methodology.tsx
++++ b/components/Methodology.tsx
+@@ -1,4 +1,5 @@
+ import { Section } from './Section';
++import { Reveal } from './Reveal';
+ 
+ const steps = [
+   { n: '01', t: 'Relevamiento', d: 'Entendemos qué sistemas necesitan comunicarse y qué información debe circular.' },
+@@ -11,14 +12,24 @@ const steps = [
+ 
+ export function Methodology() {
+   return (
+-    <Section id="metodologia" eyebrow="Metodología" title="Cómo trabajamos." tone="panel">
+-      <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+-        {steps.map((s) => (
+-          <li key={s.n} className="rounded-lg border border-void-border bg-void-panel p-6">
+-            <span className="mb-4 block font-mono text-sm text-signal">{s.n}</span>
+-            <h3 className="mb-2 text-lg font-semibold text-ink">{s.t}</h3>
+-            <p className="text-sm text-ink-muted">{s.d}</p>
+-          </li>
++    <Section id="metodologia" index="05" eyebrow="Metodología" title="Cómo trabajamos." tone="panel">
++      <ol className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
++        <div
++          aria-hidden="true"
++          className="absolute left-0 right-0 top-6 hidden h-px bg-line-900 lg:block"
++        />
++        {steps.map((s, i) => (
++          <Reveal key={s.n} delay={i * 70}>
++            <li className="relative flex flex-col gap-4">
++              <div className="relative z-10 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-signal-500/40 bg-void-900 font-mono text-sm text-signal-400">
++                {s.n}
++              </div>
++              <div>
++                <h3 className="mb-1.5 font-display text-base font-semibold text-ink-100">{s.t}</h3>
++                <p className="text-sm leading-relaxed text-ink-500">{s.d}</p>
++              </div>
++            </li>
++          </Reveal>
+         ))}
+       </ol>
+     </Section>
+diff --git a/components/Problem.tsx b/components/Problem.tsx
+index 3b3e5d7..0567124 100644
+--- a/components/Problem.tsx
++++ b/components/Problem.tsx
+@@ -1,30 +1,45 @@
+ import { Section } from './Section';
++import { Reveal } from './Reveal';
+ 
+-const problems = [
+-  'Tenemos dos sistemas y alguien copia información manualmente.',
+-  'Nuestro CRM y nuestro sistema interno no se comunican.',
+-  'Necesitamos integrar un servicio externo.',
+-  'Tenemos una aplicación y necesitamos exponer sus datos.',
+-  'Cada integración se resuelve de una manera diferente.',
+-  'Los procesos dependen de archivos, mails o cargas manuales.',
+-  'Queremos automatizar, pero primero necesitamos conectar los sistemas.',
++const pairs = [
++  { before: 'Tenemos dos sistemas y alguien copia información manualmente.', after: 'Sincronización automática entre sistemas.' },
++  { before: 'Nuestro CRM y nuestro sistema interno no se comunican.', after: 'CRM y sistema interno conectados por API.' },
++  { before: 'Necesitamos integrar un servicio externo.', after: 'Servicio externo integrado de forma segura.' },
++  { before: 'Tenemos una aplicación y necesitamos exponer sus datos.', after: 'Datos expuestos mediante endpoints documentados.' },
++  { before: 'Cada integración se resuelve de una manera diferente.', after: 'Un mismo criterio para todas las integraciones.' },
++  { before: 'Los procesos dependen de archivos, mails o cargas manuales.', after: 'Procesos conectados, sin cargas manuales.' },
++  { before: 'Queremos automatizar, pero primero necesitamos conectar los sistemas.', after: 'Sistemas conectados, listos para automatizar.' },
+ ];
+ 
+ export function Problem() {
+   return (
+-    <Section id="problema" eyebrow="Problema" title="¿Te está pasando alguno de estos problemas?">
+-      <ul className="grid gap-3 md:grid-cols-2">
+-        {problems.map((p) => (
+-          <li
+-            key={p}
+-            className="flex items-start gap-3 rounded-md border border-void-border bg-void-panel/60 px-4 py-3 text-sm text-ink-muted md:text-base"
+-          >
+-            <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-signal" />
+-            <span>{p}</span>
+-          </li>
++    <Section
++      id="problema"
++      index="01"
++      eyebrow="Problema"
++      title="¿Te está pasando alguno de estos problemas?"
++    >
++      <div className="grid gap-3">
++        {pairs.map((p, i) => (
++          <Reveal key={p.before} delay={i * 60}>
++            <div className="grid items-center gap-3 rounded-xl border border-line-900 bg-void-800/40 p-5 transition-colors hover:border-line-700 sm:grid-cols-[1fr_auto_1fr] sm:gap-6">
++              <p className="text-sm leading-relaxed text-ink-500 sm:text-base">
++                <span className="mr-2 text-ink-700">✕</span>
++                {p.before}
++              </p>
++              <span aria-hidden="true" className="hidden text-line-500 sm:block">
++                →
++              </span>
++              <p className="text-sm font-medium leading-relaxed text-ink-100 sm:text-base">
++                <span className="mr-2 text-aurora-500">✓</span>
++                {p.after}
++              </p>
++            </div>
++          </Reveal>
+         ))}
+-      </ul>
+-      <p className="mt-10 max-w-2xl text-lg font-medium text-ink md:text-xl">
++      </div>
++
++      <p className="mt-10 max-w-2xl text-lg font-medium text-ink-100 md:text-xl">
+         Cuando los sistemas no se comunican, las personas terminan funcionando como API humanas.
+       </p>
+     </Section>
+diff --git a/components/Requirements.tsx b/components/Requirements.tsx
+deleted file mode 100644
+index bdf2322..0000000
+--- a/components/Requirements.tsx
++++ /dev/null
+@@ -1,32 +0,0 @@
+-import { Section } from './Section';
+-
+-const items = [
+-  'descripción de los sistemas involucrados',
+-  'objetivo de la integración',
+-  'documentación existente',
+-  'documentación de APIs externas, si corresponde',
+-  'ejemplos de datos',
+-  'acceso técnico cuando sea necesario',
+-  'restricciones de seguridad',
+-  'ambiente disponible',
+-  'responsables técnicos o funcionales',
+-];
+-
+-export function Requirements() {
+-  return (
+-    <Section id="requisitos" eyebrow="Para comenzar" title="Información necesaria.">
+-      <ul className="grid gap-2 md:grid-cols-2">
+-        {items.map((i) => (
+-          <li key={i} className="flex items-center gap-3 rounded-md border border-void-border bg-void-panel/60 px-4 py-2.5 text-ink-muted">
+-            <span aria-hidden="true" className="h-1 w-4 flex-shrink-0 bg-signal" />
+-            <span>{i}</span>
+-          </li>
+-        ))}
+-      </ul>
+-      <p className="mt-8 max-w-2xl text-ink">
+-        No necesitás tener toda la arquitectura resuelta antes de contactarnos. Podemos ayudarte a
+-        definirla.
+-      </p>
+-    </Section>
+-  );
+-}
+diff --git a/components/Scope.tsx b/components/Scope.tsx
+index 95f6602..ba82ef8 100644
+--- a/components/Scope.tsx
++++ b/components/Scope.tsx
+@@ -1,4 +1,5 @@
+ import { Section } from './Section';
++import { Reveal } from './Reveal';
+ 
+ const factors = [
+   'cantidad de sistemas',
+@@ -19,16 +20,20 @@ const factors = [
+ 
+ export function Scope() {
+   return (
+-    <Section id="alcance" eyebrow="Alcance" title="¿Qué determina el alcance?" tone="panel">
+-      <p className="mb-6 text-ink-muted">El esfuerzo depende principalmente de:</p>
+-      <ul className="grid gap-x-8 gap-y-2 md:grid-cols-2 lg:grid-cols-3">
+-        {factors.map((f) => (
+-          <li key={f} className="flex items-center gap-3 text-ink-muted">
+-            <span aria-hidden="true" className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-signal" />
+-            <span>{f}</span>
+-          </li>
+-        ))}
+-      </ul>
++    <Section id="alcance" index="07" eyebrow="Alcance" title="¿Qué determina el alcance?" tone="panel">
++      <p className="mb-6 text-ink-300">El esfuerzo depende principalmente de:</p>
++      <Reveal>
++        <div className="flex flex-wrap gap-3">
++          {factors.map((f) => (
++            <span
++              key={f}
++              className="rounded-full border border-line-700 bg-void-800/60 px-4 py-2 text-sm text-ink-300 transition-colors hover:border-signal-500/50 hover:text-ink-100"
++            >
++              {f}
++            </span>
++          ))}
++        </div>
++      </Reveal>
+     </Section>
+   );
+ }
+diff --git a/components/Solution.tsx b/components/Solution.tsx
+index 91d9878..41f4bd2 100644
+--- a/components/Solution.tsx
++++ b/components/Solution.tsx
+@@ -1,4 +1,6 @@
+ import { Section } from './Section';
++import { Card } from './Card';
++import { Reveal } from './Reveal';
+ 
+ const capabilities = [
+   'diseñar endpoints',
+@@ -15,20 +17,28 @@ const capabilities = [
+   'integrar la API dentro de una arquitectura existente',
+ ];
+ 
++const accents = ['signal', 'aurora', 'plasma'] as const;
++
+ export function Solution() {
+   return (
+-    <Section id="solucion" eyebrow="Solución" title="Una capa de integración entre tus sistemas." tone="panel">
+-      <p className="mb-8 max-w-2xl text-ink-muted">
+-        AETHERYON puede:
+-      </p>
+-      <ul className="grid gap-x-8 gap-y-3 md:grid-cols-2">
+-        {capabilities.map((c) => (
+-          <li key={c} className="flex items-start gap-3 text-ink-muted">
+-            <span aria-hidden="true" className="mt-2 h-1 w-4 flex-shrink-0 bg-signal" />
+-            <span>{c}</span>
+-          </li>
++    <Section
++      id="solucion"
++      index="02"
++      eyebrow="Solución"
++      title="Una capa de integración entre tus sistemas."
++      description="AETHERYON puede:"
++      tone="panel"
++    >
++      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
++        {capabilities.map((c, i) => (
++          <Reveal key={c} delay={i * 50}>
++            <Card accent={accents[i % accents.length]} className="h-full">
++              <span className="mb-3 block h-1 w-6 bg-signal-500" />
++              <p className="text-sm leading-relaxed text-ink-300 md:text-base">{c}</p>
++            </Card>
++          </Reveal>
+         ))}
+-      </ul>
++      </div>
+     </Section>
+   );
+ }
+diff --git a/components/StatsBar.tsx b/components/StatsBar.tsx
+new file mode 100644
+index 0000000..3762341
+--- /dev/null
++++ b/components/StatsBar.tsx
+@@ -0,0 +1,31 @@
++import { Reveal } from './Reveal';
++
++const stats = [
++  { value: '12', label: 'capacidades técnicas cubiertas' },
++  { value: '7', label: 'áreas de alcance técnico' },
++  { value: '6', label: 'etapas de metodología' },
++  { value: '10', label: 'preguntas ya resueltas' },
++];
++
++export function StatsBar() {
++  return (
++    <div className="relative border-b border-line-900 bg-void-800/40">
++      <div className="mx-auto grid max-w-container grid-cols-2 gap-8 px-6 py-10 md:grid-cols-4 md:py-12">
++        {stats.map((s, i) => (
++          <Reveal key={s.label} delay={i * 80}>
++            <div className="text-center md:text-left">
++              <div className="font-display text-4xl font-semibold tracking-tight text-ink-100 md:text-5xl">
++                <span className="bg-gradient-to-r from-signal-400 to-aurora-400 bg-clip-text text-transparent">
++                  {s.value}
++                </span>
++              </div>
++              <p className="mt-2 text-xs uppercase tracking-[0.15em] text-ink-500 md:text-[13px]">
++                {s.label}
++              </p>
++            </div>
++          </Reveal>
++        ))}
++      </div>
++    </div>
++  );
++}
+diff --git a/components/Timeline.tsx b/components/Timeline.tsx
+index c453cd0..e0ba1cc 100644
+--- a/components/Timeline.tsx
++++ b/components/Timeline.tsx
+@@ -1,22 +1,23 @@
+ import { Section } from './Section';
++import { Reveal } from './Reveal';
++
++const factors = ['sistemas', 'integraciones', 'endpoints', 'reglas', 'dependencias', 'disponibilidad de accesos'];
+ 
+ export function Timeline() {
+   return (
+-    <Section id="tiempo" eyebrow="Tiempo" title="Tiempo estimado: según alcance del proyecto." tone="panel">
+-      <p className="mb-4 max-w-2xl text-ink-muted">
+-        El plazo se define después de conocer:
+-      </p>
+-      <ul className="mb-6 grid gap-2 md:grid-cols-2 lg:grid-cols-3">
+-        {['sistemas', 'integraciones', 'endpoints', 'reglas', 'dependencias', 'disponibilidad de accesos'].map(
+-          (i) => (
+-            <li key={i} className="flex items-center gap-3 text-ink-muted">
+-              <span aria-hidden="true" className="h-1 w-4 flex-shrink-0 bg-signal" />
++    <Section id="tiempo" index="08" eyebrow="Tiempo" title="Tiempo estimado: según alcance del proyecto.">
++      <p className="mb-4 max-w-2xl text-ink-300">El plazo se define después de conocer:</p>
++      <Reveal>
++        <ul className="mb-6 grid gap-2 md:grid-cols-2 lg:grid-cols-3">
++          {factors.map((i) => (
++            <li key={i} className="flex items-center gap-3 text-ink-300">
++              <span aria-hidden="true" className="h-1 w-4 flex-shrink-0 bg-signal-500" />
+               <span>{i}</span>
+             </li>
+-          ),
+-        )}
+-      </ul>
+-      <p className="max-w-2xl text-ink-muted">
++          ))}
++        </ul>
++      </Reveal>
++      <p className="max-w-2xl text-ink-100">
+         Si el proyecto tiene un alcance suficientemente definido, el plazo queda establecido en la
+         propuesta/orden de trabajo.
+       </p>
+diff --git a/components/UseCases.tsx b/components/UseCases.tsx
+index 5d82212..f87679f 100644
+--- a/components/UseCases.tsx
++++ b/components/UseCases.tsx
+@@ -18,7 +18,7 @@ export function UseCases() {
+       index="03"
+       eyebrow="Casos de uso"
+       title="Dónde aplica una integración."
+-      tone="panel"
++      tone="accent"
+     >
+       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+         {cases.map((c, i) => (
