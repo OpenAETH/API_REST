@@ -33,7 +33,7 @@ export function AuroraCanvas() {
     let raf = 0;
     let running = true;
     let lastFrame = 0;
-    const FRAME_MS = 1000 / 30; // throttle a 30fps
+    const FRAME_MS = 1000 / 30;
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
@@ -49,42 +49,55 @@ export function AuroraCanvas() {
     resize();
     window.addEventListener('resize', resize);
 
+    // Blobs más vivos y saturados
     const blobs: Blob[] = [
       {
-        color: 'rgba(91, 140, 255, 0.42)',
-        radius: 480,
-        speedX: 0.00013,
-        speedY: 0.00011,
+        color: 'rgba(91, 140, 255, 0.60)',  // signal — azul
+        radius: 520,
+        speedX: 0.00014,
+        speedY: 0.00012,
         phaseX: 0,
         phaseY: Math.PI / 3,
-        ampX: 0.22,
-        ampY: 0.18,
-        cx: 0.25,
-        cy: 0.3,
+        ampX: 0.26,
+        ampY: 0.20,
+        cx: 0.22,
+        cy: 0.28,
       },
       {
-        color: 'rgba(139, 92, 246, 0.32)',
-        radius: 420,
-        speedX: 0.00009,
-        speedY: 0.00014,
+        color: 'rgba(139, 92, 246, 0.50)',  // plasma — violeta
+        radius: 460,
+        speedX: 0.00010,
+        speedY: 0.00015,
         phaseX: Math.PI / 2,
         phaseY: 0,
-        ampX: 0.28,
-        ampY: 0.22,
-        cx: 0.78,
-        cy: 0.42,
+        ampX: 0.30,
+        ampY: 0.24,
+        cx: 0.80,
+        cy: 0.38,
       },
       {
-        color: 'rgba(34, 211, 164, 0.22)',
-        radius: 380,
-        speedX: 0.00011,
-        speedY: 0.00008,
+        color: 'rgba(34, 211, 164, 0.38)',  // aurora — verde cyan
+        radius: 420,
+        speedX: 0.00012,
+        speedY: 0.00009,
         phaseX: Math.PI,
         phaseY: Math.PI / 4,
-        ampX: 0.2,
-        ampY: 0.25,
-        cx: 0.5,
-        cy: 0.85,
+        ampX: 0.22,
+        ampY: 0.26,
+        cx: 0.50,
+        cy: 0.82,
+      },
+      {
+        color: 'rgba(255, 107, 138, 0.28)', // coral — NUEVO
+        radius: 380,
+        speedX: 0.00008,
+        speedY: 0.00011,
+        phaseX: Math.PI * 1.5,
+        phaseY: Math.PI / 6,
+        ampX: 0.24,
+        ampY: 0.18,
+        cx: 0.35,
+        cy: 0.65,
       },
     ];
 
@@ -108,7 +121,7 @@ export function AuroraCanvas() {
 
         const gradient = ctx.createRadialGradient(x, y, 0, x, y, b.radius);
         gradient.addColorStop(0, b.color);
-        gradient.addColorStop(0.45, b.color.replace(/[\d.]+\)$/, '0.08)'));
+        gradient.addColorStop(0.45, b.color.replace(/[\d.]+\)$/, '0.14)'));
         gradient.addColorStop(1, 'transparent');
 
         ctx.fillStyle = gradient;
@@ -142,7 +155,7 @@ export function AuroraCanvas() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 h-full w-full"
-      style={{ filter: 'blur(60px) saturate(140%)' }}
+      style={{ filter: 'blur(70px) saturate(160%)' }}
     />
   );
 }

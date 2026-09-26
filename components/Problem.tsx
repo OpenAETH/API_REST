@@ -19,7 +19,7 @@ export function Problem() {
       index="01"
       eyebrow="Problema"
       title="¿Te está pasando alguno de estos problemas?"
-      accent="signal"
+      accent="coral"
       icon={<IconProblem />}
     >
       <ul className="divide-y divide-line-900 border-y border-line-900">

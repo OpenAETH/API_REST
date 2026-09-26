@@ -11,7 +11,7 @@ export function Timeline() {
       index="09"
       eyebrow="Tiempo"
       title="Tiempo estimado: según alcance del proyecto."
-      accent="aurora"
+      accent="amber"
       icon={<IconTimeline />}
     >
       <p className="mb-8 max-w-2xl text-ink-300">El plazo se define después de conocer:</p>

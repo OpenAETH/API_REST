@@ -18,7 +18,7 @@ export function Methodology() {
       index="05"
       eyebrow="Metodología"
       title="Cómo trabajamos."
-      accent="signal"
+      accent="amber"
       icon={<IconMethodology />}
     >
       <div className="relative">

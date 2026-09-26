@@ -33,23 +33,27 @@ export function ParticleCanvas() {
     const FRAME_MS = 1000 / 30;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
+    // Paleta variada
     const colors = [
-      'rgba(91, 140, 255, ALPHA)',
-      'rgba(139, 92, 246, ALPHA)',
-      'rgba(34, 211, 164, ALPHA)',
+      'rgba(91, 140, 255, ALPHA)',   // signal
+      'rgba(139, 92, 246, ALPHA)',   // plasma
+      'rgba(34, 211, 164, ALPHA)',   // aurora
+      'rgba(255, 107, 138, ALPHA)',  // coral
+      'rgba(251, 191, 36, ALPHA)',   // amber
     ];
 
     let particles: Particle[] = [];
 
     const spawn = (w: number, h: number): Particle[] => {
-      const count = Math.min(40, Math.floor((w * h) / 40000));
+      // Más partículas (antes 40 max)
+      const count = Math.min(70, Math.floor((w * h) / 28000));
       return Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.08,
-        vy: -0.08 - Math.random() * 0.12,
-        r: 0.6 + Math.random() * 1.2,
-        alpha: 0.15 + Math.random() * 0.35,
+        vx: (Math.random() - 0.5) * 0.10,
+        vy: -0.10 - Math.random() * 0.15,
+        r: 0.7 + Math.random() * 1.5,
+        alpha: 0.20 + Math.random() * 0.45,
         color: colors[Math.floor(Math.random() * colors.length)],
       }));
     };
@@ -78,6 +82,7 @@ export function ParticleCanvas() {
       const h = window.innerHeight;
 
       ctx.clearRect(0, 0, w, h);
+      ctx.globalCompositeOperation = 'lighter';
 
       for (const p of particles) {
         p.x += p.vx;
@@ -123,7 +128,7 @@ export function ParticleCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 h-full w-full opacity-70"
+      className="absolute inset-0 h-full w-full opacity-80"
     />
   );
 }

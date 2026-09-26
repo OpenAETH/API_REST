@@ -9,16 +9,40 @@ export function Card({
 }: {
   children: ReactNode;
   className?: string;
-  accent?: 'signal' | 'aurora' | 'plasma';
+  accent?: 'signal' | 'aurora' | 'plasma' | 'coral' | 'amber';
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 50, y: 50 });
 
   const accentMap = {
-    signal: 'rgba(91,140,255,0.18)',
-    aurora: 'rgba(34,211,164,0.18)',
-    plasma: 'rgba(139,92,246,0.18)',
+    signal: {
+      spotlight: 'rgba(91,140,255,0.24)',
+      border: 'rgba(91,140,255,0.35)',
+      tint: 'rgba(91,140,255,0.05)',
+    },
+    aurora: {
+      spotlight: 'rgba(34,211,164,0.22)',
+      border: 'rgba(34,211,164,0.35)',
+      tint: 'rgba(34,211,164,0.05)',
+    },
+    plasma: {
+      spotlight: 'rgba(139,92,246,0.24)',
+      border: 'rgba(139,92,246,0.35)',
+      tint: 'rgba(139,92,246,0.05)',
+    },
+    coral: {
+      spotlight: 'rgba(255,107,138,0.22)',
+      border: 'rgba(255,107,138,0.35)',
+      tint: 'rgba(255,107,138,0.05)',
+    },
+    amber: {
+      spotlight: 'rgba(251,191,36,0.22)',
+      border: 'rgba(251,191,36,0.35)',
+      tint: 'rgba(251,191,36,0.05)',
+    },
   };
+
+  const a = accentMap[accent];
 
   return (
     <div
@@ -37,13 +61,14 @@ export function Card({
         bg-void-700/50 backdrop-blur-sm
         p-6
         transition-all duration-300
-        hover:border-line-700 hover:-translate-y-0.5
+        hover:-translate-y-0.5
         ${className}
       `}
       style={{
         backgroundImage: `
-          radial-gradient(400px circle at ${pos.x}% ${pos.y}%, ${accentMap[accent]}, transparent 40%),
-          linear-gradient(to bottom right, rgba(10,13,24,0.7), rgba(6,8,15,0.75))
+          radial-gradient(400px circle at ${pos.x}% ${pos.y}%, ${a.spotlight}, transparent 40%),
+          linear-gradient(135deg, ${a.tint} 0%, transparent 40%),
+          linear-gradient(to bottom right, rgba(13,18,48,0.7), rgba(6,8,15,0.75))
         `,
       }}
     >

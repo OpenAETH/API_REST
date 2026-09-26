@@ -4,40 +4,55 @@ import { IconRocket } from './icons';
 
 export function FinalCTA() {
   return (
-      <section
-        id="comenzar"
-        className="relative isolate overflow-hidden border-b border-line-900 bg-void-900/40"
-      >
-      {/* Grid técnico de fondo */}
+    <section
+      id="comenzar"
+      className="relative isolate overflow-hidden border-b border-line-900 bg-void-900/40"
+    >
+      {/* Grid + glows más vivos */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        className="pointer-events-none absolute inset-0 opacity-[0.08]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(91,140,255,0.4) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(91,140,255,0.4) 1px, transparent 1px)
+            linear-gradient(rgba(91,140,255,0.6) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(91,140,255,0.6) 1px, transparent 1px)
           `,
-          backgroundSize: '40px 40px',
+          backgroundSize: '48px 48px',
           maskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 100%)',
         }}
       />
 
-      {/* Glow central */}
+      {/* Glow central grande */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 blur-[120px]"
-        style={{ background: 'radial-gradient(ellipse, rgba(91,140,255,0.18), transparent 60%)' }}
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[1000px] -translate-x-1/2 -translate-y-1/2 blur-[140px]"
+        style={{ background: 'radial-gradient(ellipse, rgba(91,140,255,0.28), transparent 60%)' }}
+      />
+
+      {/* Glow coral lateral */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] rounded-full blur-[100px] opacity-40"
+        style={{ background: 'radial-gradient(circle, rgba(255,107,138,0.30), transparent 70%)' }}
+      />
+
+      {/* Glow plasma lateral */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 bottom-0 h-[400px] w-[400px] rounded-full blur-[100px] opacity-40"
+        style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.30), transparent 70%)' }}
       />
 
       <div className="relative mx-auto max-w-container px-6 py-24 text-center md:py-32">
-        {/* Ícono decorativo */}
+        {/* Ícono con glow más fuerte */}
         <div className="mb-8 flex justify-center">
-          <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-signal-500/40 bg-signal-500/5 text-signal-400">
+          <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-signal-500/60 bg-signal-500/10 text-signal-400">
             <span
               aria-hidden="true"
-              className="absolute inset-0 animate-pulse rounded-full bg-signal-500/20 blur-xl"
+              className="absolute inset-0 animate-pulse rounded-full bg-signal-500/30 blur-xl"
             />
-            <IconRocket />
+            <IconRocket className="h-6 w-6" />
           </div>
         </div>
 
@@ -71,7 +86,6 @@ export function FinalCTA() {
           </a>
         </div>
 
-        {/* Micro-trust strip */}
         <div className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-700">
           <span className="flex items-center gap-2">
             <span className="h-1 w-1 rounded-full bg-aurora-500" />

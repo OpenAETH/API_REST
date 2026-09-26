@@ -23,8 +23,20 @@ export function Atmosphere({ intensity = 'full' as Intensity }) {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-void-900"
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
     >
+      {/* Base: gradiente azul profundo en lugar de negro plano */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(ellipse 80% 60% at 50% 0%, #0a1030 0%, transparent 60%),
+            radial-gradient(ellipse 60% 50% at 100% 100%, #1a0f2e 0%, transparent 60%),
+            linear-gradient(180deg, #050818 0%, #060a22 50%, #050818 100%)
+          `,
+        }}
+      />
+
       {resolved !== 'off' && (
         <>
           <AuroraCanvas />
@@ -34,20 +46,20 @@ export function Atmosphere({ intensity = 'full' as Intensity }) {
         </>
       )}
 
-      {/* Noise siempre presente (aunque sea off) */}
+      {/* Noise */}
       <div
-        className="absolute inset-0 opacity-[0.025] mix-blend-overlay"
+        className="absolute inset-0 opacity-[0.03] mix-blend-overlay"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
         }}
       />
 
-      {/* Vignette sutil */}
+      {/* Vignette más suave */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 100% 80% at 50% 50%, transparent 40%, rgba(3,4,9,0.55) 100%)',
+            'radial-gradient(ellipse 110% 90% at 50% 50%, transparent 50%, rgba(5,8,24,0.45) 100%)',
         }}
       />
     </div>

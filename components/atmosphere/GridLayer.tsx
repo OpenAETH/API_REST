@@ -3,11 +3,11 @@ export function GridLayer() {
     <>
       <div
         aria-hidden="true"
-        className="aetheryon-grid absolute inset-0 opacity-[0.18]"
+        className="aetheryon-grid absolute inset-0 opacity-[0.22]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(91,140,255,0.14) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(91,140,255,0.14) 1px, transparent 1px)
+            linear-gradient(rgba(91,140,255,0.28) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(91,140,255,0.28) 1px, transparent 1px)
           `,
           backgroundSize: '64px 64px',
           maskImage:
@@ -17,14 +17,13 @@ export function GridLayer() {
         }}
       />
 
-      {/* Grid secundario más fino para dar sensación de capas */}
       <div
         aria-hidden="true"
-        className="aetheryon-grid-slow absolute inset-0 opacity-[0.08]"
+        className="aetheryon-grid-slow absolute inset-0 opacity-[0.14]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(139,92,246,0.14) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(139,92,246,0.14) 1px, transparent 1px)
+            linear-gradient(rgba(139,92,246,0.35) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(139,92,246,0.35) 1px, transparent 1px)
           `,
           backgroundSize: '128px 128px',
           maskImage:
