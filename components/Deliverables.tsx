@@ -26,7 +26,7 @@ export function Deliverables() {
       index="04"
       eyebrow="Entregables"
       title="Qué recibe el cliente."
-      accent="aurora"
+      accent="gold"
       icon={<IconDeliverables />}
       tone="panel"
     >
