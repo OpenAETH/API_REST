@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-type Accent = 'signal' | 'aurora' | 'plasma' | 'coral' | 'amber';
+type Accent = 'teal' | 'gold' | 'violet';
 
 interface SectionProps {
   id?: string;
@@ -27,57 +27,41 @@ const accentMap: Record<
     tintTop: string;
     tintBottom: string;
     borderTop: string;
+    side: 'left' | 'right';
   }
 > = {
-  signal: {
-    text: 'text-signal-400',
-    bg: 'bg-signal-500',
-    line: 'bg-signal-500/40',
-    glowTop: 'rgba(91,140,255,0.22)',
-    glowSide: 'rgba(91,140,255,0.14)',
-    tintTop: 'rgba(91,140,255,0.06)',
-    tintBottom: 'rgba(91,140,255,0.02)',
-    borderTop: 'rgba(91,140,255,0.5)',
+  teal: {
+    text: 'text-teal-400',
+    bg: 'bg-teal-500',
+    line: 'bg-teal-500/40',
+    glowTop: 'rgba(0,229,192,0.20)',
+    glowSide: 'rgba(0,229,192,0.13)',
+    tintTop: 'rgba(0,229,192,0.06)',
+    tintBottom: 'rgba(0,229,192,0.02)',
+    borderTop: 'rgba(0,229,192,0.5)',
+    side: 'right',
   },
-  aurora: {
-    text: 'text-aurora-500',
-    bg: 'bg-aurora-500',
-    line: 'bg-aurora-500/40',
-    glowTop: 'rgba(34,211,164,0.20)',
-    glowSide: 'rgba(34,211,164,0.12)',
-    tintTop: 'rgba(34,211,164,0.05)',
-    tintBottom: 'rgba(34,211,164,0.02)',
-    borderTop: 'rgba(34,211,164,0.45)',
+  gold: {
+    text: 'text-gold-500',
+    bg: 'bg-gold-500',
+    line: 'bg-gold-500/40',
+    glowTop: 'rgba(255,209,102,0.18)',
+    glowSide: 'rgba(255,209,102,0.11)',
+    tintTop: 'rgba(255,209,102,0.05)',
+    tintBottom: 'rgba(255,209,102,0.02)',
+    borderTop: 'rgba(255,209,102,0.45)',
+    side: 'left',
   },
-  plasma: {
-    text: 'text-plasma-400',
-    bg: 'bg-plasma-500',
-    line: 'bg-plasma-500/40',
-    glowTop: 'rgba(139,92,246,0.22)',
-    glowSide: 'rgba(139,92,246,0.14)',
-    tintTop: 'rgba(139,92,246,0.06)',
-    tintBottom: 'rgba(139,92,246,0.02)',
-    borderTop: 'rgba(139,92,246,0.5)',
-  },
-  coral: {
-    text: 'text-coral-500',
-    bg: 'bg-coral-500',
-    line: 'bg-coral-500/40',
-    glowTop: 'rgba(255,107,138,0.18)',
-    glowSide: 'rgba(255,107,138,0.10)',
-    tintTop: 'rgba(255,107,138,0.05)',
-    tintBottom: 'rgba(255,107,138,0.02)',
-    borderTop: 'rgba(255,107,138,0.45)',
-  },
-  amber: {
-    text: 'text-amber-400',
-    bg: 'bg-amber-500',
-    line: 'bg-amber-500/40',
-    glowTop: 'rgba(251,191,36,0.18)',
-    glowSide: 'rgba(251,191,36,0.10)',
-    tintTop: 'rgba(251,191,36,0.05)',
-    tintBottom: 'rgba(251,191,36,0.02)',
-    borderTop: 'rgba(251,191,36,0.45)',
+  violet: {
+    text: 'text-violet-400',
+    bg: 'bg-violet-500',
+    line: 'bg-violet-500/40',
+    glowTop: 'rgba(176,102,255,0.20)',
+    glowSide: 'rgba(176,102,255,0.13)',
+    tintTop: 'rgba(176,102,255,0.06)',
+    tintBottom: 'rgba(176,102,255,0.02)',
+    borderTop: 'rgba(176,102,255,0.5)',
+    side: 'right',
   },
 };
 
@@ -87,7 +71,7 @@ export function Section({
   eyebrow,
   title,
   description,
-  accent = 'signal',
+  accent = 'teal',
   icon,
   watermark,
   children,
@@ -95,9 +79,9 @@ export function Section({
   tone = 'default',
 }: SectionProps) {
   const bg = {
-    default: 'bg-void-900/50',
-    panel: 'bg-void-800/40',
-    accent: 'bg-gradient-to-b from-void-900/40 via-void-800/50 to-void-900/40',
+    default: 'bg-dark-900/50',
+    panel: 'bg-dark-800/40',
+    accent: 'bg-gradient-to-b from-dark-900/40 via-dark-800/50 to-dark-900/40',
   }[tone];
 
   const a = accentMap[accent];
@@ -133,8 +117,8 @@ export function Section({
         className="aetheryon-accent-pulse pointer-events-none absolute top-1/4 -z-10 h-[600px] w-[600px] rounded-full blur-[140px]"
         style={{
           background: `radial-gradient(circle, ${a.glowSide} 0%, transparent 70%)`,
-          left: accent === 'aurora' ? '-10%' : 'auto',
-          right: accent !== 'aurora' ? '-10%' : 'auto',
+          left: a.side === 'left' ? '-10%' : 'auto',
+          right: a.side === 'right' ? '-10%' : 'auto',
           animationDelay: '2s',
         }}
       />
@@ -191,23 +175,21 @@ export function Section({
             <div className="mb-6 flex items-center gap-4">
               {index && (
                 <>
-                  <span className={`font-mono text-xs tracking-[0.25em] ${a.text}`}>
+                  <span className={`font-mono text-xs tracking-[0.15em] ${a.text}`}>
                     {index}
                   </span>
                   <span className={`h-px w-10 ${a.line}`} />
                 </>
               )}
               {eyebrow && (
-                <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-ink-500">
-                  {eyebrow}
-                </span>
+                <span className="text-xs font-medium text-ink-500">{eyebrow}</span>
               )}
             </div>
 
             <div className="flex items-start gap-5">
               {icon && (
                 <div
-                  className={`relative mt-1 hidden h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg border border-line-700 bg-void-700/60 backdrop-blur-sm md:flex ${a.text}`}
+                  className={`relative mt-1 hidden h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg border border-line-700 bg-dark-700/60 backdrop-blur-sm md:flex ${a.text}`}
                 >
                   <span
                     aria-hidden="true"

@@ -49,34 +49,34 @@ export function AuroraCanvas() {
     resize();
     window.addEventListener('resize', resize);
 
-    // Blobs más vivos y saturados
+    // Tres masas de color, una por acento de marca
     const blobs: Blob[] = [
       {
-        color: 'rgba(91, 140, 255, 0.60)',  // signal — azul
+        color: 'rgba(0, 229, 192, 0.45)', // teal
         radius: 520,
         speedX: 0.00014,
         speedY: 0.00012,
         phaseX: 0,
         phaseY: Math.PI / 3,
         ampX: 0.26,
-        ampY: 0.20,
+        ampY: 0.2,
         cx: 0.22,
         cy: 0.28,
       },
       {
-        color: 'rgba(139, 92, 246, 0.50)',  // plasma — violeta
+        color: 'rgba(176, 102, 255, 0.4)', // violeta
         radius: 460,
-        speedX: 0.00010,
+        speedX: 0.0001,
         speedY: 0.00015,
         phaseX: Math.PI / 2,
         phaseY: 0,
-        ampX: 0.30,
+        ampX: 0.3,
         ampY: 0.24,
-        cx: 0.80,
+        cx: 0.8,
         cy: 0.38,
       },
       {
-        color: 'rgba(34, 211, 164, 0.38)',  // aurora — verde cyan
+        color: 'rgba(255, 209, 102, 0.3)', // dorado
         radius: 420,
         speedX: 0.00012,
         speedY: 0.00009,
@@ -84,20 +84,8 @@ export function AuroraCanvas() {
         phaseY: Math.PI / 4,
         ampX: 0.22,
         ampY: 0.26,
-        cx: 0.50,
+        cx: 0.5,
         cy: 0.82,
-      },
-      {
-        color: 'rgba(255, 107, 138, 0.28)', // coral — NUEVO
-        radius: 380,
-        speedX: 0.00008,
-        speedY: 0.00011,
-        phaseX: Math.PI * 1.5,
-        phaseY: Math.PI / 6,
-        ampX: 0.24,
-        ampY: 0.18,
-        cx: 0.35,
-        cy: 0.65,
       },
     ];
 
@@ -121,7 +109,7 @@ export function AuroraCanvas() {
 
         const gradient = ctx.createRadialGradient(x, y, 0, x, y, b.radius);
         gradient.addColorStop(0, b.color);
-        gradient.addColorStop(0.45, b.color.replace(/[\d.]+\)$/, '0.14)'));
+        gradient.addColorStop(0.45, b.color.replace(/[\d.]+\)$/, '0.12)'));
         gradient.addColorStop(1, 'transparent');
 
         ctx.fillStyle = gradient;
@@ -155,7 +143,7 @@ export function AuroraCanvas() {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 h-full w-full"
-      style={{ filter: 'blur(70px) saturate(160%)' }}
+      style={{ filter: 'blur(70px) saturate(150%)' }}
     />
   );
 }

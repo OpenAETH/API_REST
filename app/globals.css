@@ -7,21 +7,20 @@
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  /* Colores ambiente — cambian según el scroll si querés (opcional) */
-  --ambient-1: #5b8cff;
-  --ambient-2: #8b5cf6;
-  --ambient-3: #22d3a4;
-  --ambient-4: #ff6b8a;
+  /* Colores ambiente — paleta canónica AETHERYON */
+  --ambient-1: #00e5c0; /* teal */
+  --ambient-2: #b066ff; /* violeta */
+  --ambient-3: #ffd166; /* dorado */
 }
 
 html {
   scroll-behavior: smooth;
-  background: #050818;
+  background: #07070f;
 }
 
 body {
   background: transparent;
-  color: #f8faff;
+  color: #f5f5fb;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-feature-settings: 'ss01', 'cv11';
@@ -55,33 +54,19 @@ body {
 }
 
 @keyframes grid-drift {
-  from { background-position: 0 0, 0 0; }
-  to { background-position: 64px 64px, 64px 64px; }
-}
-
-@keyframes grid-drift-slow {
-  from { background-position: 0 0, 0 0; }
-  to { background-position: -128px -128px, -128px -128px; }
-}
-
-@keyframes scan-vertical {
-  0% { transform: translateY(-10vh); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(110vh); opacity: 0; }
+  from { background-position: 0 0; }
+  to { background-position: 64px 64px; }
 }
 
 .aetheryon-grid { animation: grid-drift 90s linear infinite; }
-.aetheryon-grid-slow { animation: grid-drift-slow 140s linear infinite; }
-.aetheryon-scanline { animation: scan-vertical 14s ease-in-out infinite; will-change: transform, opacity; }
 .aetheryon-accent-pulse { animation: accent-breathe 8s ease-in-out infinite; will-change: transform, opacity; }
 
-/* Texto con brillo */
+/* Texto con brillo (uso puntual, no en el H1 principal) */
 .aetheryon-shimmer {
   background: linear-gradient(
     90deg,
     theme('colors.ink.100') 0%,
-    theme('colors.signal.400') 50%,
+    theme('colors.teal.400') 50%,
     theme('colors.ink.100') 100%
   );
   background-size: 200% auto;
@@ -93,12 +78,12 @@ body {
 
 /* ============ SELECTION / FOCUS ============ */
 ::selection {
-  background: #5b8cff;
-  color: #050818;
+  background: #00e5c0;
+  color: #07070f;
 }
 
 *:focus-visible {
-  outline: 2px solid #5b8cff;
+  outline: 2px solid #00e5c0;
   outline-offset: 3px;
   border-radius: 6px;
 }
@@ -106,14 +91,14 @@ body {
 /* ============ SCROLLBAR ============ */
 @media (min-width: 768px) {
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: #050818; }
+  ::-webkit-scrollbar-track { background: #07070f; }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #5b8cff 0%, #8b5cf6 100%);
+    background: linear-gradient(180deg, #00e5c0 0%, #b066ff 100%);
     border-radius: 10px;
-    border: 2px solid #050818;
+    border: 2px solid #07070f;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #7da3ff 0%, #a78bfa 100%);
+    background: linear-gradient(180deg, #33ecd0 0%, #c48cff 100%);
   }
 }
 

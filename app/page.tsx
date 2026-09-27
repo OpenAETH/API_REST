@@ -2,17 +2,17 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 
 import { Hero } from '@/components/Hero';
+import { StatsBar } from '@/components/StatsBar';
 import { Problem } from '@/components/Problem';
 import { Solution } from '@/components/Solution';
 import { UseCases } from '@/components/UseCases';
 import { Build } from '@/components/Build';
-import { Deliverables } from '@/components/Deliverables';
 import { Methodology } from '@/components/Methodology';
-import { Requirements } from '@/components/Requirements';
+import { Handoff } from '@/components/Handoff';
 import { Scope } from '@/components/Scope';
-import { Investment } from '@/components/Investment';
 import { Timeline } from '@/components/Timeline';
-import { Exclusions } from '@/components/Exclusions';
+import { Investment } from '@/components/Investment';
+import { Comparison } from '@/components/Comparison';
 import { FAQ } from '@/components/FAQ';
 import { Differentiation } from '@/components/Differentiation';
 import { FinalCTA } from '@/components/FinalCTA';
@@ -64,17 +64,17 @@ export default function LandingAPIPage() {
       <StickyCTA />
       <main className="pt-14 md:pt-16">
         <Hero />
+        <StatsBar />
         <Problem />
         <Solution />
         <UseCases />
         <Build />
-        <Deliverables />
         <Methodology />
-        <Requirements />
+        <Handoff />
         <Scope />
-        <Investment />
         <Timeline />
-        <Exclusions />
+        <Investment />
+        <Comparison />
         <FAQ />
         <Differentiation />
         <FinalCTA />

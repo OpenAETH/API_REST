@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body className="relative min-h-screen bg-void-900 font-body text-ink-100 antialiased">
+      <body className="relative min-h-screen bg-dark-900 font-body text-ink-100 antialiased">
         <Atmosphere />
         <div className="relative z-10">{children}</div>
       </body>

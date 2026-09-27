@@ -13,7 +13,7 @@ export function Accordion({ items }: { items: Item[] }) {
   const [open, setOpen] = useState<string | null>(null);
 
   return (
-    <div className="divide-y divide-line-900/60 overflow-hidden rounded-2xl border border-line-900/80 bg-gradient-to-b from-void-700/40 to-void-800/40 backdrop-blur-sm">
+    <div className="divide-y divide-line-900/60 overflow-hidden rounded-2xl border border-line-900/80 bg-gradient-to-b from-dark-700/40 to-dark-800/40 backdrop-blur-sm">
       {items.map((item) => {
         const isOpen = open === item.id;
         return (
@@ -27,12 +27,12 @@ export function Accordion({ items }: { items: Item[] }) {
               }}
               aria-expanded={isOpen}
               aria-controls={`faq-${item.id}`}
-              className="flex w-full items-center justify-between gap-6 px-6 py-6 text-left transition-colors hover:bg-void-700/40 md:px-8"
+              className="flex w-full items-center justify-between gap-6 px-6 py-6 text-left transition-colors hover:bg-dark-700/40 md:px-8"
             >
               <span className="flex items-center gap-4 text-base font-medium text-ink-100 md:text-lg">
                 <span
                   className={`h-1.5 w-1.5 flex-shrink-0 rounded-full transition-colors ${
-                    isOpen ? 'bg-signal-500' : 'bg-line-500 group-hover:bg-signal-500'
+                    isOpen ? 'bg-teal-500' : 'bg-line-500 group-hover:bg-teal-500'
                   }`}
                 />
                 {item.question}
@@ -41,8 +41,8 @@ export function Accordion({ items }: { items: Item[] }) {
                 aria-hidden="true"
                 className={`relative flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
                   isOpen
-                    ? 'rotate-45 border-signal-500 bg-signal-500/10 text-signal-400'
-                    : 'border-line-700 text-ink-500 group-hover:border-signal-500/50'
+                    ? 'rotate-45 border-teal-500 bg-teal-500/10 text-teal-400'
+                    : 'border-line-700 text-ink-500 group-hover:border-teal-500/50'
                 }`}
               >
                 <span className="text-sm leading-none">+</span>
