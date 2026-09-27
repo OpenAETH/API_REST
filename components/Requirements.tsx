@@ -21,7 +21,7 @@ export function Requirements() {
       index="06"
       eyebrow="Para comenzar"
       title="Información necesaria."
-      accent="aurora"
+      accent="teal"
       icon={<IconRequirements />}
       tone="panel"
     >
