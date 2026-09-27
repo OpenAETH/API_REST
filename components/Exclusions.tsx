@@ -22,7 +22,7 @@ export function Exclusions() {
       eyebrow="Condiciones"
       title="Para evitar sorpresas."
       description="El precio base no implica automáticamente:"
-      accent="coral"
+      accent="violet"
       icon={<IconConditions />}
       tone="panel"
     >
