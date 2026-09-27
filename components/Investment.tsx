@@ -7,10 +7,10 @@ export function Investment() {
   return (
     <Section
       id="inversion"
-      index="09"
+      index="08"
       eyebrow="Inversión"
       title="Precio de referencia."
-      accent="teal"
+      accent="signal"
       icon={<IconInvestment />}
       tone="panel"
     >

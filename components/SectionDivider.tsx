@@ -1,10 +1,12 @@
-export function SectionDivider({ accent = 'teal' }: { accent?: string }) {
+export function SectionDivider({ accent = 'signal' }: { accent?: string }) {
   const colors: Record<string, string> = {
-    teal: '#00E5C0',
-    gold: '#FFD166',
-    violet: '#B066FF',
+    signal: '#5b8cff',
+    aurora: '#22d3a4',
+    plasma: '#8b5cf6',
+    coral: '#ff6b8a',
+    amber: '#fbbf24',
   };
-  const c = colors[accent] ?? colors.teal;
+  const c = colors[accent] ?? colors.signal;
 
   return (
     <div

@@ -39,31 +39,43 @@ export function CTAButton({
   const variants = {
     primary: `
       relative overflow-hidden
-      bg-teal-500 text-dark-900 font-semibold
-      hover:bg-teal-400
+      bg-signal-500 text-void-900 font-semibold
+      hover:bg-signal-400
       before:absolute before:inset-0 before:-translate-x-full
       before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent
       hover:before:translate-x-full before:transition-transform before:duration-700
     `,
     secondary: `
-      border border-line-700 bg-dark-700/40 text-ink-100 backdrop-blur
-      hover:border-teal-500 hover:text-teal-400 hover:bg-dark-700
+      border border-line-700 bg-void-700/40 text-ink-100 backdrop-blur
+      hover:border-signal-500 hover:text-signal-400 hover:bg-void-700
     `,
-    ghost: `text-ink-300 hover:text-teal-400`,
+    ghost: `text-ink-300 hover:text-signal-400`,
   };
 
   const glowClass = glow
-    ? 'shadow-[0_0_0_1px_rgba(0,229,192,0.3),0_0_40px_-5px_rgba(0,229,192,0.5)] hover:shadow-[0_0_0_1px_rgba(0,229,192,0.5),0_0_60px_-5px_rgba(0,229,192,0.8)]'
+    ? `
+      shadow-[0_0_0_1px_rgba(91,140,255,0.5),0_0_50px_-5px_rgba(91,140,255,0.7)]
+      hover:shadow-[0_0_0_1px_rgba(125,163,255,0.8),0_0_80px_-5px_rgba(91,140,255,1)]
+    `
     : '';
+  {variant === 'primary' && (
+    <span
+      aria-hidden="true"
+      className="absolute inset-0 -z-10 rounded-lg bg-signal-500/40 blur-xl opacity-60 animate-glow"
+    />
+  )}
 
   return (
     <a
       href={finalHref}
       onClick={() => track(eventType, { position, target: href })}
-      className={`group relative inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 whitespace-nowrap ${sizes[size]} ${variants[variant]} ${glowClass} ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 whitespace-nowrap ${sizes[size]} ${variants[variant]} ${glowClass} ${className}`}
       aria-label={label}
     >
       <span className="relative z-10">{label}</span>
+      <span className="relative z-10 transition-transform duration-200 group-hover:translate-x-0.5">
+        →
+      </span>
     </a>
   );
 }

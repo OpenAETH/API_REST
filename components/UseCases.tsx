@@ -23,8 +23,8 @@ export function UseCases() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {cases.map((c, i) => (
           <Reveal key={c.title} delay={i * 80}>
-            <Card accent="teal">
-              <h3 className="mb-2 font-mono text-sm uppercase tracking-wider text-teal-400">
+            <Card accent="signal">
+              <h3 className="mb-2 font-mono text-sm uppercase tracking-wider text-signal-400">
                 {c.title}
               </h3>
               <p className="text-ink-300">{c.body}</p>

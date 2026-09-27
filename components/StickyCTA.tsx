@@ -23,15 +23,15 @@ export function StickyCTA() {
       <div
         className={`fixed inset-x-0 top-0 z-40 hidden transition-all duration-300 md:block ${
           scrolled
-            ? 'border-b border-line-900 bg-dark-900/80 backdrop-blur-xl'
+            ? 'border-b border-line-900 bg-void-900/80 backdrop-blur-xl'
             : 'border-b border-transparent bg-transparent'
         }`}
       >
         <div className="mx-auto flex max-w-container items-center justify-between px-6 py-3">
           <div className="flex items-center gap-3">
             <div className="relative flex h-6 w-6 items-center justify-center">
-              <div className="absolute inset-0 rounded-full bg-teal-500/20 blur-md" />
-              <div className="relative h-2 w-2 rounded-full bg-teal-500" />
+              <div className="absolute inset-0 rounded-full bg-signal-500/20 blur-md" />
+              <div className="relative h-2 w-2 rounded-full bg-signal-500" />
             </div>
             <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-ink-300">
               AETHERYON
@@ -52,7 +52,7 @@ export function StickyCTA() {
       </div>
 
       <div
-        className={`fixed inset-x-0 bottom-0 z-40 border-t border-line-900 bg-dark-900/95 p-3 backdrop-blur-xl transition-transform duration-300 md:hidden ${
+        className={`fixed inset-x-0 bottom-0 z-40 border-t border-line-900 bg-void-900/95 p-3 backdrop-blur-xl transition-transform duration-300 md:hidden ${
           scrolled ? 'translate-y-0' : 'translate-y-full'
         }`}
       >

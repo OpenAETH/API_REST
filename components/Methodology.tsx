@@ -18,7 +18,7 @@ export function Methodology() {
       index="05"
       eyebrow="Metodología"
       title="Cómo trabajamos."
-      accent="gold"
+      accent="amber"
       icon={<IconMethodology />}
     >
       <div className="relative">
@@ -37,9 +37,9 @@ export function Methodology() {
                   <div className="relative flex h-16 w-16 items-center justify-center">
                     <span
                       aria-hidden="true"
-                      className="absolute inset-0 rounded-full bg-teal-500/0 transition-all duration-300 group-hover:bg-teal-500/10 group-hover:blur-xl"
+                      className="absolute inset-0 rounded-full bg-signal-500/0 transition-all duration-300 group-hover:bg-signal-500/10 group-hover:blur-xl"
                     />
-                    <span className="relative flex h-16 w-16 items-center justify-center rounded-full border border-line-700 bg-dark-800/70 font-display text-xl font-semibold text-ink-100 backdrop-blur-sm transition-all duration-300 group-hover:border-teal-500/60 group-hover:text-teal-400">
+                    <span className="relative flex h-16 w-16 items-center justify-center rounded-full border border-line-700 bg-void-800/70 font-display text-xl font-semibold text-ink-100 backdrop-blur-sm transition-all duration-300 group-hover:border-signal-500/60 group-hover:text-signal-400">
                       {s.n}
                     </span>
                   </div>
