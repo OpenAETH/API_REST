@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { AuroraCanvas } from './atmosphere/AuroraCanvas';
-import { ParticleCanvas } from './atmosphere/ParticleCanvas';
 import { GridLayer } from './atmosphere/GridLayer';
-import { ScanlineLayer } from './atmosphere/ScanlineLayer';
 
 type Intensity = 'off' | 'soft' | 'full';
 
@@ -25,14 +23,14 @@ export function Atmosphere({ intensity = 'full' as Intensity }) {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
     >
-      {/* Base: gradiente azul profundo en lugar de negro plano */}
+      {/* Base: gradiente oscuro con tinte teal/violeta de marca */}
       <div
         className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 80% 60% at 50% 0%, #0a1030 0%, transparent 60%),
-            radial-gradient(ellipse 60% 50% at 100% 100%, #1a0f2e 0%, transparent 60%),
-            linear-gradient(180deg, #050818 0%, #060a22 50%, #050818 100%)
+            radial-gradient(ellipse 80% 60% at 50% 0%, #0a1f1c 0%, transparent 60%),
+            radial-gradient(ellipse 60% 50% at 100% 100%, #170f2e 0%, transparent 60%),
+            linear-gradient(180deg, #07070F 0%, #0D0D1A 50%, #07070F 100%)
           `,
         }}
       />
@@ -41,8 +39,6 @@ export function Atmosphere({ intensity = 'full' as Intensity }) {
         <>
           <AuroraCanvas />
           <GridLayer />
-          {resolved === 'full' && <ParticleCanvas />}
-          <ScanlineLayer />
         </>
       )}
 
@@ -54,12 +50,12 @@ export function Atmosphere({ intensity = 'full' as Intensity }) {
         }}
       />
 
-      {/* Vignette más suave */}
+      {/* Vignette */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 110% 90% at 50% 50%, transparent 50%, rgba(5,8,24,0.45) 100%)',
+            'radial-gradient(ellipse 110% 90% at 50% 50%, transparent 50%, rgba(7,7,15,0.5) 100%)',
         }}
       />
     </div>

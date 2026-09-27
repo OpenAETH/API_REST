@@ -19,20 +19,20 @@ export function Problem() {
       index="01"
       eyebrow="Problema"
       title="¿Te está pasando alguno de estos problemas?"
-      accent="coral"
+      accent="violet"
       icon={<IconProblem />}
     >
       <ul className="divide-y divide-line-900 border-y border-line-900">
         {problems.map((p, i) => (
           <Reveal key={p.text} delay={i * 60}>
-            <li className="group flex items-center gap-6 py-5 transition-colors hover:bg-void-800/40 md:py-6">
-              <span className="w-10 flex-shrink-0 font-mono text-xs tracking-[0.2em] text-ink-700 transition-colors group-hover:text-signal-500">
+            <li className="group flex items-center gap-6 py-5 transition-colors hover:bg-dark-800/40 md:py-6">
+              <span className="w-10 flex-shrink-0 font-mono text-xs tracking-[0.2em] text-ink-700 transition-colors group-hover:text-teal-500">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <span className="flex-1 text-base text-ink-300 transition-colors group-hover:text-ink-100 md:text-lg">
                 {p.text}
               </span>
-              <span className="hidden flex-shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-700 transition-colors group-hover:text-signal-500 md:block">
+              <span className="hidden flex-shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-700 transition-colors group-hover:text-teal-500 md:block">
                 {p.tag}
               </span>
             </li>
@@ -41,15 +41,15 @@ export function Problem() {
       </ul>
 
       <Reveal delay={200}>
-        <div className="relative mt-12 overflow-hidden rounded-lg border border-signal-500/30 bg-gradient-to-br from-void-700/60 to-void-800/70 p-6 backdrop-blur-sm md:p-8">
+        <div className="relative mt-12 overflow-hidden rounded-lg border border-teal-500/30 bg-gradient-to-br from-dark-700/60 to-dark-800/70 p-6 backdrop-blur-sm md:p-8">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full blur-3xl"
-            style={{ background: 'radial-gradient(circle, rgba(91,140,255,0.2), transparent 70%)' }}
+            style={{ background: 'radial-gradient(circle, rgba(0,229,192,0.2), transparent 70%)' }}
           />
           <p className="relative max-w-3xl font-display text-xl font-medium leading-snug text-ink-100 md:text-2xl">
             Cuando los sistemas no se comunican,{' '}
-            <span className="text-signal-400">las personas terminan funcionando como API humanas.</span>
+            <span className="text-teal-400">las personas terminan funcionando como API humanas.</span>
           </p>
         </div>
       </Reveal>
