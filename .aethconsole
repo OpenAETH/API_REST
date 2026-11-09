@@ -1,0 +1,733 @@
+# AETHERYON DevDeck — blueprint del proyecto (schema aethconsole/1)
+# Archivo único y autoconsistente. Los campos derivados se regeneran al inspeccionar;
+# para proteger un valor manual añade el nombre del campo a `manual_fields` del objeto
+# o marca el objeto con `managed: manual`. No incluyas secretos.
+meta:
+  schema: aethconsole/1
+  schema_version: 1
+  blueprint_id: d116aead1b8e464bba6969f42301a60b
+  generator:
+    name: aetheryon-devdeck
+    version: 0.1.0
+  created_at: '2026-10-22T02:59:00Z'
+  updated_at: '2026-10-22T03:04:44Z'
+  inspected_at: '2026-10-22T03:04:44Z'
+  fingerprint: 93972bf6c2ee93b1
+project:
+  name: aetheryon-landing-api
+  description: null
+  root: .
+  kind: single_component
+  vcs: git
+  languages:
+  - id: lang.typescript
+    name: TypeScript
+    files: 45
+    share: 0.9184
+    status: inferred
+    confidence: high
+    evidence:
+    - source: filesystem
+      detail: 45 archivo(s)
+  - id: lang.javascript
+    name: JavaScript
+    files: 2
+    share: 0.0408
+    status: inferred
+    confidence: high
+    evidence:
+    - source: filesystem
+      detail: 2 archivo(s)
+  - id: lang.css
+    name: CSS
+    files: 1
+    share: 0.0204
+    status: inferred
+    confidence: high
+    evidence:
+    - source: filesystem
+      detail: 1 archivo(s)
+  - id: lang.python
+    name: Python
+    files: 1
+    share: 0.0204
+    status: inferred
+    confidence: high
+    evidence:
+    - source: filesystem
+      detail: 1 archivo(s)
+  status: inferred
+  confidence: high
+  evidence:
+  - source: filesystem
+    detail: 53 archivo(s)
+topology:
+  components:
+  - id: cmp.root
+    name: aetheryon-landing-api
+    path: .
+    kind: service
+    languages:
+    - lang.typescript
+    - lang.javascript
+    - lang.css
+    - lang.python
+    frameworks:
+    - name: Next.js
+      version: 14.2.35
+      status: declared
+      confidence: high
+      evidence:
+      - source: package.json
+        detail: dependencies.next
+    - name: React
+      version: 18.3.1
+      status: declared
+      confidence: high
+      evidence:
+      - source: package.json
+        detail: dependencies.react
+    - name: TypeScript
+      version: 5.5.3
+      status: declared
+      confidence: high
+      evidence:
+      - source: package.json
+        detail: devDependencies.typescript
+    package_managers:
+    - name: npm
+      status: declared
+      confidence: high
+      evidence:
+      - source: package-lock.json
+    manifests:
+    - package.json
+    entry_points:
+    - ent.root.rewrite-py
+    - ent.root.npm-start
+    - ent.root.npm-dev
+    status: declared
+    confidence: high
+    evidence:
+    - source: package.json
+  relations: []
+discovery:
+  stats:
+    files: 53
+    dirs: 6
+    bytes: 178565
+    truncated: false
+    by_class:
+      config: 4
+      docs: 1
+      source: 48
+    by_language:
+      CSS: 1
+      JavaScript: 2
+      Python: 1
+      TypeScript: 45
+  exclusions:
+  - .git
+  - .hg
+  - .svn
+  - __pycache__
+  - node_modules
+  - .venv
+  - venv
+  - .mypy_cache
+  - .pytest_cache
+  - .ruff_cache
+  - .tox
+  - .eggs
+  - '*.egg-info'
+  - dist
+  - build
+  - .idea
+  - .vscode
+  - .next
+  - .cache
+  - coverage
+  - site-packages
+  - .DS_Store
+  - .aethconsole
+  notable_files:
+  - path: components/Requirements.tsx
+    class: config
+    language: TypeScript
+    component: cmp.root
+  - path: Especificacion.md
+    class: docs
+    language: null
+    component: cmp.root
+  - path: package-lock.json
+    class: config
+    language: null
+    component: cmp.root
+  - path: package.json
+    class: config
+    language: null
+    component: cmp.root
+  - path: rewrite.py
+    class: source
+    language: Python
+    component: cmp.root
+  - path: tsconfig.json
+    class: config
+    language: null
+    component: cmp.root
+  entry_points:
+  - id: ent.root.rewrite-py
+    component: cmp.root
+    name: rewrite.py
+    path: rewrite.py
+    kind: script
+    origin: code
+    primary: true
+    command:
+      tool: tool.python
+      program: python
+      args:
+      - rewrite.py
+    status: inferred
+    confidence: medium
+    evidence:
+    - source: rewrite.py
+      line: 218
+      detail: guardia if __name__ == "__main__"
+  - id: ent.root.npm-start
+    component: cmp.root
+    name: npm run start
+    path: null
+    kind: node_script
+    origin: manifest
+    primary: false
+    command:
+      tool: tool.npm
+      program: npm
+      args:
+      - run
+      - start
+    status: declared
+    confidence: high
+    evidence:
+    - source: package.json
+      detail: scripts.start = next start
+  - id: ent.root.npm-dev
+    component: cmp.root
+    name: npm run dev
+    path: null
+    kind: node_script
+    origin: manifest
+    primary: false
+    command:
+      tool: tool.npm
+      program: npm
+      args:
+      - run
+      - dev
+    status: declared
+    confidence: high
+    evidence:
+    - source: package.json
+      detail: scripts.dev = next dev
+  scripts:
+  - id: scr.root.build
+    component: cmp.root
+    name: build
+    command: next build
+    origin: package.json
+    status: declared
+    confidence: high
+    evidence:
+    - source: package.json
+      detail: scripts.build
+  - id: scr.root.dev
+    component: cmp.root
+    name: dev
+    command: next dev
+    origin: package.json
+    status: declared
+    confidence: high
+    evidence:
+    - source: package.json
+      detail: scripts.dev
+  - id: scr.root.lint
+    component: cmp.root
+    name: lint
+    command: next lint
+    origin: package.json
+    status: declared
+    confidence: high
+    evidence:
+    - source: package.json
+      detail: scripts.lint
+  - id: scr.root.start
+    component: cmp.root
+    name: start
+    command: next start
+    origin: package.json
+    status: declared
+    confidence: high
+    evidence:
+    - source: package.json
+      detail: scripts.start
+  dependencies:
+  - component: cmp.root
+    ecosystem: npm
+    name: next
+    spec: 14.2.35
+    scope: runtime
+    source: package.json
+  - component: cmp.root
+    ecosystem: npm
+    name: react
+    spec: 18.3.1
+    scope: runtime
+    source: package.json
+  - component: cmp.root
+    ecosystem: npm
+    name: react-dom
+    spec: 18.3.1
+    scope: runtime
+    source: package.json
+  - component: cmp.root
+    ecosystem: npm
+    name: '@types/node'
+    spec: 20.14.10
+    scope: dev
+    source: package.json
+  - component: cmp.root
+    ecosystem: npm
+    name: '@types/react'
+    spec: 18.3.3
+    scope: dev
+    source: package.json
+  - component: cmp.root
+    ecosystem: npm
+    name: '@types/react-dom'
+    spec: 18.3.0
+    scope: dev
+    source: package.json
+  - component: cmp.root
+    ecosystem: npm
+    name: autoprefixer
+    spec: 10.4.19
+    scope: dev
+    source: package.json
+  - component: cmp.root
+    ecosystem: npm
+    name: postcss
+    spec: 8.4.39
+    scope: dev
+    source: package.json
+  - component: cmp.root
+    ecosystem: npm
+    name: tailwindcss
+    spec: 3.4.7
+    scope: dev
+    source: package.json
+  - component: cmp.root
+    ecosystem: npm
+    name: typescript
+    spec: 5.5.3
+    scope: dev
+    source: package.json
+  documentation: []
+environments:
+  tools:
+  - id: tool.npm
+    name: npm
+    kind: package_manager
+    path: C:\nvm4w\nodejs\npm.CMD
+    version: 12.2.0
+    available: true
+    checked_at: '2026-10-22T02:59:00Z'
+    status: available
+    confidence: high
+    evidence:
+    - source: PATH
+      detail: C:\nvm4w\nodejs\npm.CMD
+  - id: tool.python
+    name: Python
+    kind: runtime
+    path: C:\Users\Guido\AppData\Local\Programs\Python\Python313\python.EXE
+    version: 3.13.12
+    available: true
+    checked_at: '2026-10-22T02:59:00Z'
+    status: available
+    confidence: high
+    evidence:
+    - source: PATH
+      detail: C:\Users\Guido\AppData\Local\Programs\Python\Python313\python.EXE
+  components:
+  - id: env.root.python
+    component: cmp.root
+    kind: python
+    requirement: null
+    virtualenv: null
+    interpreter: null
+    lockfiles: []
+    status: inferred
+    confidence: low
+    evidence:
+    - source: package.json
+    ready: true
+    missing_dependencies: []
+    checked_at: '2026-10-22T02:59:00Z'
+  - id: env.root.node
+    component: cmp.root
+    kind: node
+    requirement: null
+    virtualenv: null
+    interpreter: null
+    lockfiles:
+    - package-lock.json
+    status: inferred
+    confidence: low
+    evidence:
+    - source: package.json
+    ready: true
+    missing_dependencies: []
+    checked_at: '2026-10-22T02:59:00Z'
+interfaces:
+  cli: []
+  endpoints: []
+  ports:
+  - id: if.port.root.3000
+    component: cmp.root
+    port: 3000
+    protocol: tcp
+    origin: script
+    status: inferred
+    confidence: low
+    evidence:
+    - source: package.json
+      detail: puerto por defecto de Next.js (no declarado)
+  ui: []
+operations:
+  catalog:
+  - id: op.root.run-rewrite-py
+    label: python rewrite.py
+    component: cmp.root
+    category: run
+    command:
+      tool: tool.python
+      program: python
+      args:
+      - rewrite.py
+    cwd: .
+    preconditions:
+    - kind: tool_available
+      ref: tool.python
+    - kind: file_exists
+      path: rewrite.py
+    - kind: environment
+      ref: env.root.python
+      detail: dependencies
+    effects:
+    - starts_process
+    permissions:
+    - execute
+    success:
+      kind: exit_code
+      expected: 0
+    source:
+    - ent.root.rewrite-py
+    status: inferred
+    confidence: medium
+    evidence:
+    - source: rewrite.py
+      line: 218
+      detail: guardia if __name__ == "__main__"
+  - id: op.root.venv
+    label: python -m venv .venv
+    component: cmp.root
+    category: install
+    command:
+      tool: tool.python
+      program: python
+      args:
+      - -m
+      - venv
+      - .venv
+    cwd: .
+    preconditions:
+    - kind: tool_available
+      ref: tool.python
+    - kind: authorization
+      detail: writes_fs
+    effects:
+    - writes_fs
+    permissions:
+    - execute
+    - write
+    success:
+      kind: exit_code
+      expected: 0
+    source: []
+    status: inferred
+    confidence: medium
+    evidence:
+    - source: filesystem
+      detail: sin entorno virtual detectado
+  - id: op.root.npm-build
+    label: npm run build
+    component: cmp.root
+    category: build
+    command:
+      tool: tool.npm
+      program: npm
+      args:
+      - run
+      - build
+    cwd: .
+    preconditions:
+    - kind: tool_available
+      ref: tool.npm
+    - kind: file_exists
+      path: package.json
+    - kind: authorization
+      detail: writes_fs
+    - kind: environment
+      ref: env.root.node
+      detail: dependencies
+    effects:
+    - writes_fs
+    permissions:
+    - execute
+    - write
+    success:
+      kind: exit_code
+      expected: 0
+    source:
+    - scr.root.build
+    status: declared
+    confidence: high
+    evidence:
+    - source: package.json
+      detail: scripts.build
+  - id: op.root.npm-dev
+    label: npm run dev
+    component: cmp.root
+    category: run
+    command:
+      tool: tool.npm
+      program: npm
+      args:
+      - run
+      - dev
+    cwd: .
+    preconditions:
+    - kind: tool_available
+      ref: tool.npm
+    - kind: file_exists
+      path: package.json
+    - kind: environment
+      ref: env.root.node
+      detail: dependencies
+    effects:
+    - starts_process
+    permissions:
+    - execute
+    success:
+      kind: exit_code
+      expected: 0
+    source:
+    - scr.root.dev
+    status: declared
+    confidence: high
+    evidence:
+    - source: package.json
+      detail: scripts.dev
+  - id: op.root.npm-lint
+    label: npm run lint
+    component: cmp.root
+    category: lint
+    command:
+      tool: tool.npm
+      program: npm
+      args:
+      - run
+      - lint
+    cwd: .
+    preconditions:
+    - kind: tool_available
+      ref: tool.npm
+    - kind: file_exists
+      path: package.json
+    - kind: environment
+      ref: env.root.node
+      detail: dependencies
+    effects:
+    - reads_fs
+    permissions:
+    - execute
+    success:
+      kind: exit_code
+      expected: 0
+    source:
+    - scr.root.lint
+    status: declared
+    confidence: high
+    evidence:
+    - source: package.json
+      detail: scripts.lint
+  - id: op.root.npm-start
+    label: npm run start
+    component: cmp.root
+    category: run
+    command:
+      tool: tool.npm
+      program: npm
+      args:
+      - run
+      - start
+    cwd: .
+    preconditions:
+    - kind: tool_available
+      ref: tool.npm
+    - kind: file_exists
+      path: package.json
+    - kind: environment
+      ref: env.root.node
+      detail: dependencies
+    effects:
+    - starts_process
+    permissions:
+    - execute
+    success:
+      kind: exit_code
+      expected: 0
+    source:
+    - scr.root.start
+    status: declared
+    confidence: high
+    evidence:
+    - source: package.json
+      detail: scripts.start
+  - id: op.root.npm-install
+    label: npm install
+    component: cmp.root
+    category: install
+    command:
+      tool: tool.npm
+      program: npm
+      args:
+      - install
+    cwd: .
+    preconditions:
+    - kind: tool_available
+      ref: tool.npm
+    - kind: file_exists
+      path: package.json
+    - kind: authorization
+      detail: installs,network,alters_environment
+    effects:
+    - installs
+    - network
+    - alters_environment
+    permissions:
+    - execute
+    - install
+    - network
+    success:
+      kind: exit_code
+      expected: 0
+    source: []
+    status: declared
+    confidence: high
+    evidence:
+    - source: package.json
+docker:
+  dockerfiles: []
+  compose_files: []
+  services: []
+runtime:
+  observed_at: '2026-10-23T21:13:02Z'
+  processes: []
+  docker:
+    cli_available: null
+    cli_path: null
+    compose_plugin: null
+    daemon: unknown
+    version: null
+    error: null
+    images: []
+    containers: []
+  verifications: []
+  history:
+  - id: run.349d4a4e
+    operation: op.root.npm-start
+    label: npm run start
+    state: failed
+    exit_code: 1
+    started_at: '2026-10-23T21:13:01Z'
+    duration_s: 0.821
+    log_ref:
+      path: ~/.devdeck/logs/0c1850f2de0f/20261023-181301-349d4a4e.log
+      bytes: 1000
+      lines: 18
+  - id: run.0ef063e9
+    operation: op.root.npm-dev
+    label: npm run dev
+    state: failed
+    exit_code: 1
+    started_at: '2026-10-23T21:11:47Z'
+    duration_s: 63.041
+    log_ref:
+      path: ~/.devdeck/logs/0c1850f2de0f/20261023-181147-0ef063e9.log
+      bytes: 343
+      lines: 10
+  - id: run.6aeb78d0
+    operation: op.root.npm-start
+    label: npm run start
+    state: failed
+    exit_code: 1
+    started_at: '2026-10-22T03:01:38Z'
+    duration_s: 1.503
+    log_ref:
+      path: ~/.devdeck/logs/0c1850f2de0f/20261022-000138-6aeb78d0.log
+      bytes: 1000
+      lines: 18
+  - id: run.eb34e57f
+    operation: op.root.npm-dev
+    label: npm run dev
+    state: failed
+    exit_code: 1
+    started_at: '2026-10-22T02:59:16Z'
+    duration_s: 136.599
+    log_ref:
+      path: ~/.devdeck/logs/0c1850f2de0f/20261021-235916-eb34e57f.log
+      bytes: 205
+      lines: 6
+  git:
+    present: true
+    branch: main
+    detached: false
+diagnostics:
+  findings:
+  - id: dg.no_virtualenv.1
+    severity: info
+    origin: tooling
+    code: no_virtualenv
+    message: 'cmp.root: no hay entorno virtual (.venv/venv); se usaría el Python del sistema. Crea uno
+      con la operación «python -m venv».'
+    refs:
+    - cmp.root
+    at: '2026-10-22T02:59:00Z'
+  - id: dg.run-failed.op-root-npm-dev
+    severity: warning
+    origin: execution
+    code: run_failed
+    message: «npm run dev» terminó con código 1.
+    refs:
+    - op.root.npm-dev
+    at: '2026-10-23T21:12:50Z'
+  - id: dg.run-failed.op-root-npm-start
+    severity: warning
+    origin: execution
+    code: run_failed
+    message: «npm run start» terminó con código 1.
+    refs:
+    - op.root.npm-start
+    at: '2026-10-23T21:13:02Z'
