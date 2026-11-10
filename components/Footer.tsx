@@ -1,6 +1,8 @@
 import { landingConfig } from '@/config/landing';
 import { IconEngine, IconShip } from './icons';
 
+const { author } = landingConfig;
+
 const links = [
   { href: '#problema', label: 'Problema' },
   { href: '#solucion', label: 'Solución' },
@@ -48,9 +50,43 @@ export function Footer() {
             ))}
           </nav>
         </div>
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-line-900 pt-6 text-xs text-ink-700 md:flex-row">
-          <span>© {new Date().getFullYear()} AETHERYON Systems</span>
-          <span>REST API / Integración</span>
+        <div className="mt-10 border-t border-line-900 pt-6">
+          <div className="flex flex-col gap-4 text-xs text-ink-500 md:flex-row md:items-start md:justify-between">
+            <address className="not-italic leading-relaxed">
+              <span className="block font-medium text-ink-300">
+                {author.name}
+                <span className="text-ink-700"> · </span>
+                {author.role}
+              </span>
+              <span className="block text-ink-500">
+                {author.country} <span className="text-ink-700">·</span> {author.id}
+              </span>
+            </address>
+            <p className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <a
+                href={author.companyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-teal-400"
+              >
+                {author.company}
+              </a>
+              <a
+                href={author.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-teal-400"
+              >
+                LinkedIn
+              </a>
+            </p>
+          </div>
+          <div className="mt-6 flex flex-col items-center justify-between gap-3 text-xs text-ink-700 md:flex-row">
+            <span>
+              © {new Date().getFullYear()} {author.company} · {author.name}
+            </span>
+            <span className="font-mono tracking-wide text-ink-500">{author.credit}</span>
+          </div>
         </div>
       </div>
     </footer>

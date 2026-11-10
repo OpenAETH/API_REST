@@ -6,6 +6,16 @@ export const landingConfig = {
     canonical: 'https://aetheryon.systems/API',
     ogImage: '/og-api.png',
   },
+  author: {
+    company: 'AETHERYON Systems',
+    companyUrl: 'https://aetheryon.onrender.com/',
+    name: 'Guido Miguel Gómez',
+    role: 'Specific Consultant',
+    country: 'ARG',
+    id: '2039765690',
+    linkedin: 'https://www.linkedin.com/in/guido-agraound/',
+    credit: 'Build with 🧡 for AETHERYON.',
+  },
   engine: {
     name: 'ABRAHADABRA',
     short: 'Motor H₂',

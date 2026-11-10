@@ -1,0 +1,12 @@
+/* EQUIPO */
+Autor: Guido Miguel Gómez
+Rol: Specific Consultant
+Empresa: AETHERYON Systems
+Sitio: https://aetheryon.onrender.com/
+LinkedIn: https://www.linkedin.com/in/guido-agraound/
+País: ARG
+
+/* SITIO */
+Proyecto: REST API / Integración de sistemas
+Motor: ABRAHADABRA H2
+Build with 🧡 for AETHERYON.

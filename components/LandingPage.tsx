@@ -18,6 +18,7 @@ import { Engine } from '@/components/Engine';
 import { FinalCTA } from '@/components/FinalCTA';
 import { Footer } from '@/components/Footer';
 import { StickyCTA } from '@/components/StickyCTA';
+import { landingConfig } from '@/config/landing';
 
 export function LandingPage() {
   const jsonLd = {
@@ -28,6 +29,19 @@ export function LandingPage() {
       '@type': 'Organization',
       name: 'AETHERYON Systems',
       url: 'https://aetheryon.systems',
+      sameAs: [landingConfig.author.companyUrl],
+    },
+    author: {
+      '@type': 'Person',
+      name: landingConfig.author.name,
+      jobTitle: landingConfig.author.role,
+      url: landingConfig.author.linkedin,
+      sameAs: [landingConfig.author.linkedin],
+      worksFor: {
+        '@type': 'Organization',
+        name: landingConfig.author.company,
+        url: landingConfig.author.companyUrl,
+      },
     },
     description:
       'Diseño e implementación de APIs REST para conectar sistemas, aplicaciones y datos.',

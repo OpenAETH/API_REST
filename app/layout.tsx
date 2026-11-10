@@ -50,6 +50,10 @@ export const metadata: Metadata = {
     description: landingConfig.meta.description,
     images: [landingConfig.meta.ogImage],
   },
+  applicationName: 'AETHERYON Systems',
+  authors: [{ name: landingConfig.author.name, url: landingConfig.author.linkedin }],
+  creator: landingConfig.author.name,
+  publisher: landingConfig.author.company,
   keywords: ['API REST', 'integración de sistemas', 'AETHERYON', 'ABRAHADABRA'],
   icons: {
     icon: [{ url: '/favicon.ico?v=2', sizes: 'any' }],
