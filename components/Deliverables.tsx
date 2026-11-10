@@ -33,13 +33,13 @@ export function Deliverables() {
       <ul className="grid gap-x-10 gap-y-1 md:grid-cols-2">
         {deliverables.map((d, i) => (
           <Reveal key={d} delay={i * 30}>
-            <li className="group flex items-center gap-4 border-b border-line-900/60 py-3.5 transition-colors hover:border-aurora-500/40">
+            <li className="group flex items-center gap-4 border-b border-line-900/60 py-3.5 transition-colors hover:border-teal-500/40">
               <span
                 aria-hidden="true"
-                className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-line-700 transition-colors group-hover:border-aurora-500 group-hover:bg-aurora-500/10"
+                className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-line-700 transition-colors group-hover:border-teal-500 group-hover:bg-teal-500/10"
               >
                 <svg
-                  className="h-3 w-3 text-ink-700 transition-colors group-hover:text-aurora-500"
+                  className="h-3 w-3 text-ink-700 transition-colors group-hover:text-teal-500"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -59,13 +59,13 @@ export function Deliverables() {
       </ul>
 
       <Reveal delay={200}>
-        <div className="relative mt-10 flex items-start gap-4 overflow-hidden rounded-lg border border-aurora-500/30 bg-gradient-to-br from-void-900/60 to-void-800/60 p-5 backdrop-blur-sm md:p-6">
+        <div className="relative mt-10 flex items-start gap-4 overflow-hidden rounded-lg border border-teal-500/30 bg-gradient-to-br from-dark-900/60 to-dark-800/60 p-5 backdrop-blur-sm md:p-6">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-10 -top-10 h-32 w-32 rounded-full blur-3xl"
             style={{ background: 'radial-gradient(circle, rgba(34,211,164,0.2), transparent 70%)' }}
           />
-          <span className="relative flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md border border-aurora-500/40 bg-aurora-500/10 text-aurora-500">
+          <span className="relative flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md border border-teal-500/40 bg-teal-500/10 text-teal-500">
             <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10" />
               <path d="M12 16v-4M12 8h.01" />

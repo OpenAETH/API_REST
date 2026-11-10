@@ -29,7 +29,7 @@ export function Exclusions() {
       <ul className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {exclusions.map((e, i) => (
           <Reveal key={e} delay={i * 40}>
-            <li className="group relative flex items-start gap-4 overflow-hidden rounded-lg border border-line-900/80 bg-void-900/40 px-5 py-4 backdrop-blur-sm transition-all duration-200 hover:border-line-700 hover:bg-void-800/60">
+            <li className="group relative flex items-start gap-4 overflow-hidden rounded-lg border border-line-900/80 bg-dark-900/40 px-5 py-4 backdrop-blur-sm transition-all duration-200 hover:border-line-700 hover:bg-dark-800/60">
               {/* Borde izquierdo de acento sutil */}
               <span
                 aria-hidden="true"
@@ -48,7 +48,7 @@ export function Exclusions() {
       </ul>
 
       <Reveal delay={200}>
-        <div className="mt-10 flex items-start gap-4 rounded-lg border border-line-700 bg-void-900/80 p-5">
+        <div className="mt-10 flex items-start gap-4 rounded-lg border border-line-700 bg-dark-900/80 p-5">
           <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md border border-plasma-500/40 bg-plasma-500/10 text-plasma-400">
             <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 5v14M5 12h14" />
