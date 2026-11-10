@@ -51,7 +51,11 @@ export const metadata: Metadata = {
     images: [landingConfig.meta.ogImage],
   },
   keywords: ['API REST', 'integración de sistemas', 'AETHERYON', 'ABRAHADABRA'],
-  icons: { apple: '/apple-touch-icon.png' },
+  icons: {
+    icon: [{ url: '/favicon.ico?v=2', sizes: 'any' }],
+    shortcut: '/favicon.ico?v=2',
+    apple: '/apple-touch-icon.png?v=2',
+  },
   robots: { index: true, follow: true },
 };
 
