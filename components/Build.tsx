@@ -17,8 +17,9 @@ export function Build() {
     <Section
       id="construir"
       index="04"
-      eyebrow="Alcance técnico"
+      eyebrow="Módulos de la nave"
       title="Qué podemos construir."
+      description="Cada módulo se acopla a los demás mediante contratos claros."
       accent="violet"
       icon={<IconBuild />}
     >

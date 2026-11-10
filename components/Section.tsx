@@ -189,14 +189,18 @@ export function Section({
             <div className="flex items-start gap-5">
               {icon && (
                 <div
-                  className={`relative mt-1 hidden h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg border border-line-700 bg-dark-700/60 backdrop-blur-sm md:flex ${a.text}`}
+                  className={`relative mt-1 hidden h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border border-line-700 bg-dark-700/70 backdrop-blur-sm md:flex ${a.text}`}
                 >
                   <span
                     aria-hidden="true"
-                    className="absolute inset-0 rounded-lg opacity-50 blur-md"
+                    className="absolute inset-0 rounded-full opacity-60 blur-md"
                     style={{ background: a.glowTop }}
                   />
-                  <span className="relative">{icon}</span>
+                  <span
+                    aria-hidden="true"
+                    className="hatch-ring absolute -inset-1.5 rounded-full border border-dashed border-current opacity-30"
+                  />
+                  <span className="relative [&>svg]:h-6 [&>svg]:w-6">{icon}</span>
                 </div>
               )}
               <div>

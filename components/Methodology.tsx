@@ -3,12 +3,12 @@ import { Reveal } from './Reveal';
 import { IconMethodology } from './icons';
 
 const steps = [
-  { n: '01', t: 'Relevamiento', d: 'Entendemos qué sistemas necesitan comunicarse y qué información debe circular.' },
-  { n: '02', t: 'Diseño', d: 'Definimos arquitectura, endpoints, contratos de datos y mecanismos de autenticación.' },
-  { n: '03', t: 'Desarrollo', d: 'Implementamos la integración.' },
-  { n: '04', t: 'Validación', d: 'Probamos los flujos y casos de error.' },
-  { n: '05', t: 'Implementación', d: 'Preparamos la solución para su utilización en el entorno correspondiente.' },
-  { n: '06', t: 'Continuidad', d: 'Podemos continuar con soporte, mantenimiento y evolución incremental.' },
+  { n: '01', f: 'Reconocimiento', t: 'Relevamiento', d: 'Entendemos qué sistemas necesitan comunicarse y qué información debe circular.' },
+  { n: '02', f: 'Trazado de ruta', t: 'Diseño', d: 'Definimos arquitectura, endpoints, contratos de datos y mecanismos de autenticación.' },
+  { n: '03', f: 'Ensamblaje', t: 'Desarrollo', d: 'Implementamos la integración.' },
+  { n: '04', f: 'Pruebas de vuelo', t: 'Validación', d: 'Probamos los flujos y casos de error.' },
+  { n: '05', f: 'Despegue', t: 'Implementación', d: 'Preparamos la solución para su utilización en el entorno correspondiente.' },
+  { n: '06', f: 'En órbita', t: 'Continuidad', d: 'Podemos continuar con soporte, mantenimiento y evolución incremental.' },
 ];
 
 export function Methodology() {
@@ -16,8 +16,9 @@ export function Methodology() {
     <Section
       id="metodologia"
       index="05"
-      eyebrow="Metodología"
+      eyebrow="Plan de vuelo"
       title="Cómo trabajamos."
+      description="Seis etapas, de la primera conversación a la órbita estable."
       accent="gold"
       icon={<IconMethodology />}
     >
@@ -45,6 +46,7 @@ export function Methodology() {
                   </div>
                 </div>
 
+                <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.2em] text-gold-500/80">{s.f}</p>
                 <h3 className="mb-2 text-base font-semibold text-ink-100 md:text-lg">{s.t}</h3>
                 <p className="text-xs leading-relaxed text-ink-500 md:text-sm">{s.d}</p>
               </li>

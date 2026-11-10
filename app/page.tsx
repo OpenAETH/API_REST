@@ -15,6 +15,7 @@ import { Investment } from '@/components/Investment';
 import { Comparison } from '@/components/Comparison';
 import { FAQ } from '@/components/FAQ';
 import { Differentiation } from '@/components/Differentiation';
+import { Engine } from '@/components/Engine';
 import { FinalCTA } from '@/components/FinalCTA';
 import { Footer } from '@/components/Footer';
 import { StickyCTA } from '@/components/StickyCTA';
@@ -77,6 +78,7 @@ export default function LandingAPIPage() {
         <Comparison />
         <FAQ />
         <Differentiation />
+        <Engine />
         <FinalCTA />
       </main>
       <Footer />

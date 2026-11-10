@@ -1,4 +1,5 @@
 import { landingConfig } from '@/config/landing';
+import { IconInvestment } from './icons';
 
 export function PriceBlock() {
   const { amount, currency, label } = landingConfig.price;
@@ -26,9 +27,9 @@ export function PriceBlock() {
       />
       <div className="relative">
         <div className="mb-6 flex items-center gap-3">
-          <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
+          <IconInvestment className="h-4 w-4 stroke-gold-500" />
           <span className="text-xs font-medium text-ink-500">
-            REST API / Integración
+            REST API / Integración · precio de referencia
           </span>
         </div>
         <div className="mb-3 flex items-baseline gap-4">

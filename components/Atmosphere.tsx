@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { AuroraCanvas } from './atmosphere/AuroraCanvas';
 import { GridLayer } from './atmosphere/GridLayer';
+import { StarfieldLayer } from './atmosphere/StarfieldLayer';
 
 type Intensity = 'off' | 'soft' | 'full';
 
@@ -41,6 +42,9 @@ export function Atmosphere({ intensity = 'full' as Intensity }) {
           <GridLayer />
         </>
       )}
+
+      {/* Campo estelar: siempre presente (estático si hay reduced-motion) */}
+      <StarfieldLayer />
 
       {/* Noise */}
       <div

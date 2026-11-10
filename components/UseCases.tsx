@@ -1,6 +1,7 @@
 import { Section } from './Section';
 import { Card } from './Card';
 import { Reveal } from './Reveal';
+import { IconCases, IconConduit } from './icons';
 
 const cases = [
   { title: 'Sistema ↔ Sistema', body: 'Integración entre aplicaciones internas.' },
@@ -16,14 +17,17 @@ export function UseCases() {
     <Section
       id="casos"
       index="03"
-      eyebrow="Casos de uso"
+      eyebrow="Rutas de acople"
       title="Dónde aplica una integración."
+      description="Seis rutas habituales por las que viaja la información entre tus sistemas."
+      icon={<IconCases />}
       tone="panel"
     >
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {cases.map((c, i) => (
           <Reveal key={c.title} delay={i * 80}>
             <Card accent="teal">
+              <IconConduit className="mb-4 h-6 w-6 stroke-teal-500/80 transition-transform duration-300 group-hover:translate-x-1" />
               <h3 className="mb-2 font-mono text-sm uppercase tracking-wider text-teal-400">
                 {c.title}
               </h3>

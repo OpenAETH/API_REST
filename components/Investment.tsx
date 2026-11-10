@@ -8,7 +8,7 @@ export function Investment() {
     <Section
       id="inversion"
       index="09"
-      eyebrow="Inversión"
+      eyebrow="Celda de combustible"
       title="Precio de referencia."
       accent="teal"
       icon={<IconInvestment />}

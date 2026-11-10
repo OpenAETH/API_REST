@@ -1,5 +1,6 @@
 import { Section } from './Section';
 import { Accordion } from './Accordion';
+import { IconQuestion } from './icons';
 
 const faqs = [
   { id: 'api-existente', question: '¿Necesito tener una API existente?', answer: 'No necesariamente. AETHERYON puede desarrollar una API propia o integrar APIs existentes.' },
@@ -16,7 +17,15 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <Section id="faq" eyebrow="Preguntas frecuentes" title="Lo que suelen preguntar." tone="panel">
+    <Section
+      id="faq"
+      eyebrow="Centro de comunicaciones"
+      title="Lo que suelen preguntar."
+      description="Diez respuestas antes de despegar."
+      icon={<IconQuestion />}
+      accent="teal"
+      tone="panel"
+    >
       <Accordion items={faqs} />
     </Section>
   );

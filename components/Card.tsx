@@ -46,7 +46,7 @@ export function Card({
         });
       }}
       className={`
-        group relative overflow-hidden rounded-xl
+        hud-corners group relative overflow-hidden rounded-xl
         border border-line-900/80
         bg-dark-700/50 backdrop-blur-sm
         p-6
@@ -62,6 +62,11 @@ export function Card({
         `,
       }}
     >
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-6 top-0 h-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{ background: `linear-gradient(to right, transparent, ${a.border}, transparent)` }}
+      />
       {children}
     </div>
   );

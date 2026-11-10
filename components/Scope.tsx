@@ -24,9 +24,9 @@ export function Scope() {
     <Section
       id="alcance"
       index="07"
-      eyebrow="Alcance"
+      eyebrow="Radar de alcance"
       title="¿Qué determina el alcance?"
-      description="El esfuerzo depende principalmente de:"
+      description="Como el combustible de una misión, el esfuerzo depende principalmente de:"
       accent="violet"
       icon={<IconScope />}
     >

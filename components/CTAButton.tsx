@@ -39,31 +39,25 @@ export function CTAButton({
   const variants = {
     primary: `
       relative overflow-hidden
-      bg-signal-500 text-void-900 font-semibold
-      hover:bg-signal-400
+      bg-gradient-to-r from-teal-500 to-teal-400 text-dark-900 font-semibold
+      hover:from-teal-400 hover:to-[#7EE8FF]
       before:absolute before:inset-0 before:-translate-x-full
-      before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent
+      before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent
       hover:before:translate-x-full before:transition-transform before:duration-700
     `,
     secondary: `
-      border border-line-700 bg-void-700/40 text-ink-100 backdrop-blur
-      hover:border-signal-500 hover:text-signal-400 hover:bg-void-700
+      border border-line-700 bg-dark-700/40 text-ink-100 backdrop-blur
+      hover:border-teal-500 hover:text-teal-400 hover:bg-dark-700
     `,
-    ghost: `text-ink-300 hover:text-signal-400`,
+    ghost: `text-ink-300 hover:text-teal-400`,
   };
 
   const glowClass = glow
     ? `
-      shadow-[0_0_0_1px_rgba(91,140,255,0.5),0_0_50px_-5px_rgba(91,140,255,0.7)]
-      hover:shadow-[0_0_0_1px_rgba(125,163,255,0.8),0_0_80px_-5px_rgba(91,140,255,1)]
+      shadow-[0_0_0_1px_rgba(0,229,192,0.5),0_0_50px_-5px_rgba(0,229,192,0.6)]
+      hover:shadow-[0_0_0_1px_rgba(126,232,255,0.8),0_0_80px_-5px_rgba(0,229,192,0.9)]
     `
     : '';
-  {variant === 'primary' && (
-    <span
-      aria-hidden="true"
-      className="absolute inset-0 -z-10 rounded-lg bg-signal-500/40 blur-xl opacity-60 animate-glow"
-    />
-  )}
 
   return (
     <a
@@ -73,9 +67,17 @@ export function CTAButton({
       aria-label={label}
     >
       <span className="relative z-10">{label}</span>
-      <span className="relative z-10 transition-transform duration-200 group-hover:translate-x-0.5">
-        →
-      </span>
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        fill="none"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="relative z-10 h-4 w-4 stroke-current transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-1"
+      >
+        <path d="M7 17 17 7M8 7h9v9" />
+      </svg>
     </a>
   );
 }

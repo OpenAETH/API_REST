@@ -1,6 +1,6 @@
 import { landingConfig } from '@/config/landing';
 import { CTAButton } from './CTAButton';
-import { IconRocket } from './icons';
+import { IconShip } from './icons';
 
 export function FinalCTA() {
   return (
@@ -45,19 +45,31 @@ export function FinalCTA() {
       />
 
       <div className="relative mx-auto max-w-container px-6 py-24 text-center md:py-32">
-        {/* Ícono con glow más fuerte */}
-        <div className="mb-8 flex justify-center">
-          <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-teal-500/60 bg-teal-500/10 text-teal-400">
+        {/* Nave en plataforma de lanzamiento */}
+        <div className="mb-10 flex flex-col items-center">
+          <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-teal-500/60 bg-teal-500/10 text-teal-400">
             <span
               aria-hidden="true"
               className="absolute inset-0 animate-pulse rounded-full bg-teal-500/30 blur-xl"
             />
-            <IconRocket className="h-6 w-6" />
+            <span
+              aria-hidden="true"
+              className="hatch-ring absolute -inset-2 rounded-full border border-dashed border-teal-500/40"
+            />
+            <IconShip className="relative h-9 w-9" />
           </div>
+          <span
+            aria-hidden="true"
+            className="animate-flame svg-origin-top mt-1 block h-14 w-3 origin-top rounded-b-full bg-gradient-to-b from-teal-400 via-teal-500/50 to-transparent blur-[2px]"
+          />
         </div>
 
+        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-gold-500">
+          {landingConfig.engine.name} · motor H₂ listo
+        </p>
+
         <h2 className="mb-5 font-display text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-ink-100">
-          ¿Necesitás conectar tus sistemas?
+          ¿Listo para <span className="text-h2-flame">encender los motores?</span>
         </h2>
 
         <p className="mx-auto mb-12 max-w-2xl text-lg text-ink-300 md:text-xl">

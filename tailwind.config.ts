@@ -55,6 +55,12 @@ const config: Config = {
         ticker: 'ticker 40s linear infinite',
         float: 'float 6s ease-in-out infinite',
         glow: 'glow-pulse 4s ease-in-out infinite',
+        flame: 'flame-flicker 0.9s ease-in-out infinite',
+        'flame-core': 'flame-flicker 0.55s ease-in-out infinite',
+        flow: 'conduit-flow 1.6s linear infinite',
+        twinkle: 'twinkle 4s ease-in-out infinite',
+        hover: 'ship-hover 7s ease-in-out infinite',
+        beacon: 'beacon 2.4s ease-in-out infinite',
       },
       keyframes: {
         ticker: {
@@ -68,6 +74,27 @@ const config: Config = {
         'glow-pulse': {
           '0%, 100%': { opacity: '0.4' },
           '50%': { opacity: '0.7' },
+        },
+        'flame-flicker': {
+          '0%, 100%': { transform: 'scaleY(1) scaleX(1)', opacity: '0.95' },
+          '30%': { transform: 'scaleY(1.14) scaleX(0.94)', opacity: '1' },
+          '60%': { transform: 'scaleY(0.9) scaleX(1.05)', opacity: '0.85' },
+        },
+        'conduit-flow': {
+          from: { strokeDashoffset: '0' },
+          to: { strokeDashoffset: '-24' },
+        },
+        twinkle: {
+          '0%, 100%': { opacity: '0.15' },
+          '50%': { opacity: '0.9' },
+        },
+        'ship-hover': {
+          '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+          '50%': { transform: 'translateY(-10px) rotate(0.6deg)' },
+        },
+        beacon: {
+          '0%, 100%': { opacity: '0.3' },
+          '50%': { opacity: '1' },
         },
       },
     },

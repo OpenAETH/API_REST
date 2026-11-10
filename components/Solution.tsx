@@ -1,6 +1,6 @@
 import { Section } from './Section';
 import { Reveal } from './Reveal';
-import { IconSolution } from './icons';
+import { IconConduit, IconSolution } from './icons';
 
 const capabilities = [
   'diseñar endpoints',
@@ -22,9 +22,9 @@ export function Solution() {
     <Section
       id="solucion"
       index="02"
-      eyebrow="Solución"
-      title="Una capa de integración entre tus sistemas."
-      description="AETHERYON puede:"
+      eyebrow="Acople"
+      title="Una capa de integración que acopla tus sistemas."
+      description="Módulos independientes, un solo casco. Con AETHERYON podés:"
       accent="gold"
       icon={<IconSolution />}
       tone="panel"
@@ -37,7 +37,7 @@ export function Solution() {
                 aria-hidden="true"
                 className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md border border-line-700 bg-dark-700 transition-colors group-hover:border-gold-500/40 group-hover:bg-gold-500/10"
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-gold-500 transition-transform group-hover:scale-150" />
+                <IconConduit className="h-4 w-4 stroke-gold-500 transition-transform group-hover:scale-125" />
               </span>
               <span className="text-sm text-ink-300 transition-colors group-hover:text-ink-100 md:text-base">
                 {c}

@@ -9,7 +9,7 @@ export function Timeline() {
     <Section
       id="tiempo"
       index="08"
-      eyebrow="Tiempo"
+      eyebrow="Reloj de misión"
       title="Tiempo estimado: según alcance del proyecto."
       accent="gold"
       icon={<IconTimeline />}

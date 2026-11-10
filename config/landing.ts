@@ -6,6 +6,11 @@ export const landingConfig = {
     canonical: 'https://aetheryon.systems/API',
     ogImage: '/og-api.png',
   },
+  engine: {
+    name: 'ABRAHADABRA',
+    short: 'Motor H₂',
+    tagline: 'El motor de hidrógeno de AETHERYON',
+  },
   price: {
     amount: 5000,
     currency: 'USD',

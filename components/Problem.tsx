@@ -17,8 +17,9 @@ export function Problem() {
     <Section
       id="problema"
       index="01"
-      eyebrow="Problema"
-      title="¿Te está pasando alguno de estos problemas?"
+      eyebrow="Señal de alerta en cubierta"
+      title="¿Tus sistemas están a la deriva?"
+      description="Si reconocés alguna de estas señales, hay una integración esperando ser construida."
       accent="violet"
       icon={<IconProblem />}
     >
@@ -49,7 +50,8 @@ export function Problem() {
           />
           <p className="relative max-w-3xl font-display text-xl font-medium leading-snug text-ink-100 md:text-2xl">
             Cuando los sistemas no se comunican,{' '}
-            <span className="text-teal-400">las personas terminan funcionando como API humanas.</span>
+            <span className="text-teal-400">las personas terminan funcionando como API humanas.</span>{' '}
+            Es hora de acoplarlos.
           </p>
         </div>
       </Reveal>

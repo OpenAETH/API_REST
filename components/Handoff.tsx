@@ -1,6 +1,6 @@
 import { Section } from './Section';
 import { Reveal } from './Reveal';
-import { IconDeliverables } from './icons';
+import { IconDeliverables, IconInvestment } from './icons';
 
 const deliverables = [
   'código fuente',
@@ -36,7 +36,7 @@ export function Handoff() {
     <Section
       id="entregables"
       index="06"
-      eyebrow="Entregables & requisitos"
+      eyebrow="Carga y combustible"
       title="Qué te llevás y qué necesitamos de vos."
       icon={<IconDeliverables />}
       accent="gold"
@@ -45,7 +45,7 @@ export function Handoff() {
         <Reveal>
           <div className="h-full rounded-2xl border border-line-900 bg-dark-800/40 p-6 md:p-8">
             <h3 className="mb-5 flex items-center gap-2.5 text-sm font-semibold text-gold-500">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
+              <IconDeliverables className="h-4 w-4 stroke-gold-500" />
               Lo que recibís
             </h3>
             <ul className="grid gap-2">
@@ -62,7 +62,7 @@ export function Handoff() {
         <Reveal delay={100}>
           <div className="h-full rounded-2xl border border-line-900 bg-dark-800/40 p-6 md:p-8">
             <h3 className="mb-5 flex items-center gap-2.5 text-sm font-semibold text-teal-400">
-              <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
+              <IconInvestment className="h-4 w-4 stroke-teal-500" />
               Lo que necesitamos de vos
             </h3>
             <ul className="grid gap-2">

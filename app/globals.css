@@ -118,3 +118,51 @@ body {
 
 .text-balance { text-wrap: balance; }
 .text-pretty { text-wrap: pretty; }
+
+/* ============ NAVE ABRAHADABRA ============ */
+.svg-origin-top { transform-box: fill-box; transform-origin: 50% 0%; }
+.svg-origin-center { transform-box: fill-box; transform-origin: 50% 50%; }
+.conduit { stroke-dasharray: 4 8; }
+
+/* Texto con llama de hidrógeno (teal → violeta) */
+.text-h2-flame {
+  background: linear-gradient(100deg, #33ecd0 0%, #7ee8ff 45%, #c48cff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Esquinas tipo HUD para tarjetas y paneles */
+.hud-corners { position: relative; }
+.hud-corners::before,
+.hud-corners::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0.35;
+}
+.hud-corners::before {
+  top: 8px;
+  left: 8px;
+  border-top: 1px solid currentColor;
+  border-left: 1px solid currentColor;
+}
+.hud-corners::after {
+  right: 8px;
+  bottom: 8px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+.hud-corners:hover::before { opacity: 0.9; transform: translate(-2px, -2px); }
+.hud-corners:hover::after { opacity: 0.9; transform: translate(2px, 2px); }
+
+/* Escotilla: contenedor de ícono con anillo giratorio */
+@keyframes hatch-spin { to { transform: rotate(360deg); } }
+.hatch-ring { animation: hatch-spin 14s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .conduit { stroke-dasharray: none; }
+}

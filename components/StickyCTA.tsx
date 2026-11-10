@@ -5,6 +5,7 @@ import { landingConfig } from '@/config/landing';
 import { CTAButton } from './CTAButton';
 import { captureUtm } from '@/lib/utm';
 import { track } from '@/lib/analytics';
+import { IconShip } from './icons';
 
 export function StickyCTA() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,9 +30,9 @@ export function StickyCTA() {
       >
         <div className="mx-auto flex max-w-container items-center justify-between px-6 py-3">
           <div className="flex items-center gap-3">
-            <div className="relative flex h-6 w-6 items-center justify-center">
+            <div className="relative flex h-7 w-7 items-center justify-center text-teal-400">
               <div className="absolute inset-0 rounded-full bg-teal-500/20 blur-md" />
-              <div className="relative h-2 w-2 rounded-full bg-teal-500" />
+              <IconShip className="relative h-5 w-5 stroke-current" />
             </div>
             <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-ink-300">
               AETHERYON

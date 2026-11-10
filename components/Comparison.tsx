@@ -1,6 +1,6 @@
 import { Section } from './Section';
 import { Reveal } from './Reveal';
-import { IconConditions } from './icons';
+import { IconConditions, IconShip } from './icons';
 
 const included = [
   'diseño e implementación de la API',
@@ -28,7 +28,7 @@ export function Comparison() {
     <Section
       id="condiciones"
       index="10"
-      eyebrow="Condiciones"
+      eyebrow="Esclusa de condiciones"
       title="Para evitar sorpresas."
       icon={<IconConditions />}
       accent="violet"
@@ -38,7 +38,7 @@ export function Comparison() {
         <Reveal>
           <div className="h-full rounded-2xl border border-gold-500/20 bg-dark-800/40 p-6 md:p-8">
             <h3 className="mb-5 flex items-center gap-2.5 text-sm font-semibold text-gold-500">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
+              <IconShip className="h-4 w-4 stroke-gold-500" />
               Incluye
             </h3>
             <ul className="grid gap-3">
