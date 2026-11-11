@@ -31,41 +31,57 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(landingConfig.siteUrl),
   title: landingConfig.meta.title,
   description: landingConfig.meta.description,
-  metadataBase: new URL('https://aetheryon.systems'),
-  alternates: { canonical: landingConfig.meta.canonical },
+  applicationName: 'AETHERYON Systems',
+  authors: [{ name: landingConfig.author.name, url: landingConfig.author.linkedin }],
+  creator: landingConfig.author.name,
+  publisher: landingConfig.author.company,
+  keywords: [...landingConfig.meta.keywords],
+  category: 'technology',
+  alternates: {
+    canonical: landingConfig.meta.canonical,
+    languages: {
+      'es-AR': landingConfig.meta.canonical,
+      'x-default': landingConfig.meta.canonical,
+    },
+  },
   openGraph: {
-    title: landingConfig.meta.title,
-    description: landingConfig.meta.description,
+    title: landingConfig.meta.ogTitle,
+    description: landingConfig.meta.ogDescription,
     url: landingConfig.meta.canonical,
     siteName: 'AETHERYON Systems',
-    images: [{ url: landingConfig.meta.ogImage, width: 1200, height: 630 }],
     locale: 'es_AR',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: landingConfig.meta.title,
-    description: landingConfig.meta.description,
-    images: [landingConfig.meta.ogImage],
+    title: landingConfig.meta.ogTitle,
+    description: landingConfig.meta.ogDescription,
   },
-  applicationName: 'AETHERYON Systems',
-  authors: [{ name: landingConfig.author.name, url: landingConfig.author.linkedin }],
-  creator: landingConfig.author.name,
-  publisher: landingConfig.author.company,
-  keywords: ['API REST', 'integración de sistemas', 'AETHERYON', 'ABRAHADABRA'],
+  formatDetection: { telephone: false, email: false, address: false },
   icons: {
     icon: [{ url: '/favicon.ico?v=2', sizes: 'any' }],
     shortcut: '/favicon.ico?v=2',
     apple: '/apple-touch-icon.png?v=2',
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${display.variable} ${body.variable} ${mono.variable}`}>
+    <html lang="es-AR" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body className="relative min-h-screen bg-dark-900 font-body text-ink-100 antialiased">
         <Atmosphere />
         <ScrollTrajectory />
