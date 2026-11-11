@@ -3,7 +3,7 @@ export const landingConfig = {
     title: 'REST API / Integración de sistemas · AETHERYON Systems',
     description:
       'Diseñamos e implementamos APIs REST para conectar sistemas, aplicaciones y datos. Desde USD 5.000. Contratación directa sin reunión previa.',
-    canonical: 'https://aetheryon.systems/API',
+    canonical: 'https://apirestlanding.vercel.app/',
     ogImage: '/og-api.png',
   },
   author: {
