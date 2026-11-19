@@ -53,7 +53,7 @@ export const landingConfig = {
   cta: {
     primary: {
       label: 'Comenzar integración',
-      href: 'https://clientsnda.onrender.com',
+      href: 'https://nda-clients.vercel.app/',
     },
     secondary: {
       label: 'Consultar si aplica a mi caso',
@@ -67,7 +67,7 @@ export const landingConfig = {
   links: {
     clientsNda: {
       label: 'Clients NDA',
-      href: 'https://clientsnda.onrender.com',
+      href: 'https://nda-clients.vercel.app/',
       description: 'Onboarding, NDA y contratación',
       status: 'operativo',
     },
